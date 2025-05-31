@@ -27,7 +27,7 @@ public class UserLoginInterfaceController {
     @FXML
     void createAccountOnAction(ActionEvent event) throws IOException {
         Stage s1 = new Stage();
-        s1.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/AddUserInterface.fxml"))));
+        s1.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/CreateUserAccountInterface.fxml"))));
         s1.show();
     }
 
@@ -62,7 +62,7 @@ public class UserLoginInterfaceController {
             clearField();
 
                 Stage s1 = new Stage();
-                s1.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/AddProductInterface.fxml"))));
+                s1.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/ServiceListuser.fxml"))));
                 s1.show();
 
         } else {
@@ -78,7 +78,7 @@ public class UserLoginInterfaceController {
 
         try {
             Connection connection = DBConnection.getInstance().getConnection();
-            PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM customer WHERE email = ? AND password = ?");
+            PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM user WHERE email = ? AND password = ?");
             preparedStatement.setString(1, email);
             preparedStatement.setString(2, password);
 

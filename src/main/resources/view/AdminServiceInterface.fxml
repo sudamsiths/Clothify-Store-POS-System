@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="700.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.adminServiceController">
+   <children>
+      <ImageView fitHeight="548.0" fitWidth="844.0" layoutX="378.0" layoutY="131.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../img/6.jpg" />
+         </image>
+      </ImageView>
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="213.0" layoutY="16.0" prefHeight="91.0" prefWidth="844.0" text="Employee Service List" textFill="WHITE">
+         <font>
+            <Font name="Book Antiqua Bold" size="51.0" />
+         </font>
+      </Label>
+      <JFXButton layoutX="82.0" layoutY="212.0" onAction="#RegisternewUserOnAction" prefHeight="55.0" prefWidth="270.0" style="-fx-background-color: yellow; -fx-border-radius: 50px;" text="Register New User">
+         <font>
+            <Font name="System Bold" size="22.0" />
+         </font>
+      </JFXButton>
+      <JFXButton layoutX="82.0" layoutY="316.0" onAction="#ViewEmployeedetailsOnAction" prefHeight="55.0" prefWidth="270.0" style="-fx-background-color: yellow; -fx-border-radius: 50px;" text="View Employee Details">
+         <font>
+            <Font name="System Bold" size="22.0" />
+         </font>
+      </JFXButton>
+      <JFXButton layoutX="82.0" layoutY="420.0" onAction="#GenarateSalesReportOnAction" prefHeight="55.0" prefWidth="270.0" style="-fx-background-color: yellow; -fx-border-radius: 50px;" text="Generate Sales Reports">
+         <font>
+            <Font name="System Bold" size="22.0" />
+         </font>
+      </JFXButton>
+      <JFXButton layoutX="82.0" layoutY="524.0" onAction="#UpdateEmployeedetailsOnAction" prefHeight="55.0" prefWidth="290.0" style="-fx-background-color: yellow; -fx-border-radius: 50px;" text="Update Employee Details">
+         <font>
+            <Font name="System Bold" size="22.0" />
+         </font>
+      </JFXButton>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#404a54" height="104.0" layoutY="-1.0" stroke="#404a54" strokeType="INSIDE" width="1200.0" />
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="203.0" layoutY="6.0" prefHeight="91.0" prefWidth="844.0" text="Employee Service List" textFill="WHITE">
+         <font>
+            <Font name="Book Antiqua Bold" size="51.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

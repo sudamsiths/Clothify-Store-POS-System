@@ -3,7 +3,6 @@
 <?import com.jfoenix.controls.JFXButton?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Rectangle?>
@@ -73,37 +72,17 @@
             <Font name="Arial Rounded MT Bold" size="17.0" />
          </font>
       </TextField>
-      <Label layoutX="656.0" layoutY="375.0" prefHeight="37.0" prefWidth="118.0" text="email          : ">
-         <font>
-            <Font name="Anton Regular" size="23.0" />
-         </font>
-      </Label>
-      <TextField fx:id="txtemail" layoutX="824.0" layoutY="376.0" prefHeight="37.0" prefWidth="223.0">
-         <font>
-            <Font name="Arial Rounded MT Bold" size="17.0" />
-         </font>
-      </TextField>
-      <Label layoutX="622.0" layoutY="466.0" prefHeight="37.0" prefWidth="155.0" text="Password         : ">
-         <font>
-            <Font name="Anton Regular" size="23.0" />
-         </font>
-      </Label>
-      <PasswordField fx:id="txtpassword" layoutX="824.0" layoutY="465.0" prefHeight="39.0" prefWidth="223.0" promptText="1234!^&amp;QRfs">
-         <font>
-            <Font size="17.0" />
-         </font>
-      </PasswordField>
-      <JFXButton layoutX="605.0" layoutY="573.0" onAction="#btnClearOnAction" prefHeight="40.0" prefWidth="103.0" style="-fx-background-color: black;" text="Clear" textFill="WHITE">
+      <JFXButton layoutX="883.0" layoutY="551.0" onAction="#btnClearOnAction" prefHeight="40.0" prefWidth="103.0" style="-fx-background-color: black;" text="Clear" textFill="WHITE">
          <font>
             <Font name="Bernard MT Condensed" size="20.0" />
          </font>
       </JFXButton>
-      <JFXButton layoutX="734.0" layoutY="573.0" onAction="#ViewCustomersOnAction" prefHeight="40.0" prefWidth="180.0" style="-fx-background-color: yellow;" text="View Customers">
+      <JFXButton layoutX="846.0" layoutY="483.0" onAction="#ViewCustomersOnAction" prefHeight="40.0" prefWidth="180.0" style="-fx-background-color: yellow;" text="View Customers">
          <font>
             <Font name="Bernard MT Condensed" size="20.0" />
          </font>
       </JFXButton>
-      <JFXButton layoutX="944.0" layoutY="573.0" onAction="#btnAddOnAction" prefHeight="40.0" prefWidth="103.0" style="-fx-background-color: green;" text="Add" textFill="WHITE">
+      <JFXButton layoutX="883.0" layoutY="410.0" onAction="#btnAddOnAction" prefHeight="40.0" prefWidth="103.0" style="-fx-background-color: green;" text="Add" textFill="WHITE">
          <font>
             <Font name="Bernard MT Condensed" size="20.0" />
          </font>

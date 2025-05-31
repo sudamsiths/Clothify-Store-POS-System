@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="700.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CreateUserAccountController">
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#404a54" height="104.0" layoutX="-1.0" stroke="#404a54" strokeType="INSIDE" width="1207.0" />
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="202.0" layoutY="7.0" prefHeight="91.0" prefWidth="844.0" text="Create Accounts As User" textFill="WHITE">
+         <font>
+            <Font name="Book Antiqua Bold" size="51.0" />
+         </font>
+      </Label>
+      <Label layoutX="725.0" layoutY="212.0" prefHeight="53.0" prefWidth="148.0" text="email          : ">
+         <font>
+            <Font name="Anton Regular" size="23.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtemail" layoutX="893.0" layoutY="213.0" prefHeight="53.0" prefWidth="251.0" promptText="sample@gmail.com">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="17.0" />
+         </font>
+      </TextField>
+      <Label layoutX="691.0" layoutY="298.0" prefHeight="53.0" prefWidth="167.0" text="Password         : ">
+         <font>
+            <Font name="Anton Regular" size="23.0" />
+         </font>
+      </Label>
+      <PasswordField fx:id="txtpassword" layoutX="893.0" layoutY="299.0" prefHeight="53.0" prefWidth="251.0" promptText="1234!^&amp;QRfs">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </PasswordField>
+      <JFXButton layoutX="788.0" layoutY="436.0" onAction="#CreateAccountOnAcrion" prefHeight="53.0" prefWidth="188.0" style="-fx-background-color: blue;" text="Create Account" textFill="#fff8f8">
+         <font>
+            <Font name="Arial Bold" size="20.0" />
+         </font>
+      </JFXButton>
+      <ImageView fitHeight="593.0" fitWidth="623.0" layoutX="43.0" layoutY="105.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../img/5.jpg" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

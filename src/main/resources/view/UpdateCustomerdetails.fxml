@@ -10,19 +10,16 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="700.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.UpdateCustomerDetailsController">
    <children>
       <TableView fx:id="tblview" layoutY="220.0" prefHeight="396.0" prefWidth="1207.0">
         <columns>
-          <TableColumn fx:id="colid" prefWidth="83.0" text="ID" />
-          <TableColumn fx:id="colname" prefWidth="173.0" text="Name" />
-            <TableColumn fx:id="colnic" prefWidth="140.0" text="NIC" />
-            <TableColumn fx:id="coladdress" prefWidth="166.0" text="Address" />
-            <TableColumn fx:id="coldob" prefWidth="142.0" text="DOB" />
-            <TableColumn fx:id="colcontact" prefWidth="137.0" text="Contact No" />
-            <TableColumn fx:id="colemail" prefWidth="240.0" text="Email" />
-            <TableColumn fx:id="colpassword" minWidth="0.0" prefWidth="125.0" text="Password" />
+          <TableColumn fx:id="colid" prefWidth="98.0" text="ID" />
+          <TableColumn fx:id="colname" prefWidth="313.0" text="Name" />
+            <TableColumn fx:id="colnic" prefWidth="181.0" text="NIC" />
+            <TableColumn fx:id="coladdress" prefWidth="247.0" text="Address" />
+            <TableColumn fx:id="coldob" prefWidth="188.0" text="DOB" />
+            <TableColumn fx:id="colcontact" prefWidth="177.0" text="Contact No" />
         </columns>
       </TableView>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#404a54" height="104.0" stroke="#404a54" strokeType="INSIDE" width="1207.0" />
@@ -31,7 +28,7 @@
             <Font name="Book Antiqua Bold" size="51.0" />
          </font>
       </Label>
-      <JFXButton layoutX="1024.0" layoutY="639.0" onAction="#btnUpdateOnAction" prefHeight="47.0" prefWidth="141.0" style="-fx-background-color: yellow;" text="Update">
+      <JFXButton layoutX="1024.0" layoutY="639.0" onAction="#btnviewallOnAction" prefHeight="47.0" prefWidth="175.0" style="-fx-background-color: yellow;" text="View All Employee">
          <font>
             <Font name="Bernard MT Condensed" size="20.0" />
          </font>

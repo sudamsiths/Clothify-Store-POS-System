@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="700.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.UserServiceListController">
+   <children>
+      <ImageView fitHeight="548.0" fitWidth="844.0" layoutX="372.0" layoutY="121.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../img/6.jpg" />
+         </image>
+      </ImageView>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#404a54" height="104.0" layoutY="-1.0" stroke="#404a54" strokeType="INSIDE" width="1200.0" />
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="203.0" layoutY="6.0" prefHeight="91.0" prefWidth="844.0" text="Employee Service List" textFill="WHITE">
+         <font>
+            <Font name="Book Antiqua Bold" size="51.0" />
+         </font>
+      </Label>
+      <JFXButton layoutX="72.0" layoutY="151.0" onAction="#editEmployeeDetailsOnAction" prefHeight="55.0" prefWidth="245.0" style="-fx-background-color: yellow; -fx-border-radius: 50px;" text="Update Your Details">
+         <font>
+            <Font name="System Bold" size="22.0" />
+         </font>
+      </JFXButton>
+      <JFXButton layoutX="72.0" layoutY="255.0" onAction="#AddProductOnAction" prefHeight="55.0" prefWidth="245.0" style="-fx-background-color: yellow; -fx-border-radius: 50px;" text="Add Product">
+         <font>
+            <Font name="System Bold" size="22.0" />
+         </font>
+      </JFXButton>
+      <JFXButton layoutX="72.0" layoutY="359.0" onAction="#StockUpdateOnAction" prefHeight="55.0" prefWidth="245.0" style="-fx-background-color: yellow; -fx-border-radius: 50px;" text="Stock Update">
+         <font>
+            <Font name="System Bold" size="22.0" />
+         </font>
+      </JFXButton>
+      <JFXButton layoutX="72.0" layoutY="463.0" onAction="#RemoveProductOnAction" prefHeight="55.0" prefWidth="245.0" style="-fx-background-color: yellow; -fx-border-radius: 50px;" text="Remove Product">
+         <font>
+            <Font name="System Bold" size="22.0" />
+         </font>
+      </JFXButton>
+      <JFXButton layoutX="72.0" layoutY="566.0" onAction="#AddNewSupplierOnAction" prefHeight="55.0" prefWidth="245.0" style="-fx-background-color: yellow; -fx-border-radius: 50px;" text="Add New Supplier">
+         <font>
+            <Font name="System Bold" size="22.0" />
+         </font>
+      </JFXButton>
+   </children>
+</AnchorPane>
