@@ -8,7 +8,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
-import model.Employee;
+import model.entity.Employee;
 import util.CRUDutil;
 
 import java.sql.ResultSet;
