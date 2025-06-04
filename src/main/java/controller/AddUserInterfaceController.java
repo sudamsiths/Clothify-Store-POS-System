@@ -1,5 +1,8 @@
 package controller;
 
+import Servicenew.ServiceFactory;
+import Servicenew.custom.EmployeeService;
+import Servicenew.custom.impl.Employeeimpl;
 import db.DBConnection;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -7,9 +10,10 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.DatePicker;
-import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import model.Employee;
+import util.ServiceType;
 
 import java.sql.*;
 
@@ -34,6 +38,8 @@ public class AddUserInterfaceController {
 
     @FXML
     private TextField txtname;
+
+
 
     @FXML
     public void initialize() throws SQLException {
@@ -67,33 +73,49 @@ public class AddUserInterfaceController {
 
     @FXML
     void btnAddOnAction(ActionEvent event) throws SQLException {
-        String nextId = txtid.getText();
+        try {
+            String nextId = txtid.getText();
+            String name = txtname.getText();
+            String nic = txtNIC.getText();
+            String address = txtaddress.getText();
+            String contactNo = txtconatcNO.getText();
 
-        Connection connection = DBConnection.getInstance().getConnection();
-        PreparedStatement preparedStatement = connection.prepareStatement(
-                "INSERT INTO customer VALUES (?,?,?,?,?,?)");
 
-        preparedStatement.setString(1, nextId);
-        preparedStatement.setString(2, txtname.getText());
-        preparedStatement.setString(3, txtNIC.getText());
-        preparedStatement.setString(4, txtaddress.getText());
-        if (txtDOB.getValue() != null) {
-            preparedStatement.setDate(5, Date.valueOf(txtDOB.getValue()));
-        } else {
-            preparedStatement.setNull(5, java.sql.Types.DATE);
-        }
-        preparedStatement.setString(6, txtconatcNO.getText());
+            Date dob = null;
+            if (txtDOB.getValue() != null) {
+                dob = Date.valueOf(txtDOB.getValue());
+            } else {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Validation Error");
+                alert.setHeaderText("Missing Date");
+                alert.setContentText("Please select a date of birth.");
+                alert.showAndWait();
+                return;
+            }
 
-        int i = preparedStatement.executeUpdate();
-        if (i > 0) {
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Success");
-            alert.setHeaderText("Customer Added Successfully");
-            alert.setContentText("Customer ID: " + nextId);
-            alert.showAndWait();
-        }
-        cleartext();
-        initialize();
+            Employee employee = new Employee(nextId,name,nic,address, dob, contactNo);
+
+            EmployeeService employeeService = ServiceFactory.getInstance().getServiceType(ServiceType.Employee);
+            Boolean isAdded = employeeService.addEmployee(employee);
+
+            if (isAdded) {
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Success");
+                alert.setHeaderText("Employee Added Successfully");
+                alert.setContentText("Employee ID: " + nextId);
+                alert.showAndWait();
+
+                cleartext();
+                initialize();
+            } else {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Error");
+                alert.setHeaderText("Failed to Add Employee");
+                alert.setContentText("Could not add employee. Please try again.");
+                alert.showAndWait();
+            }
+
+        } catch (SQLException e){}
     }
 
     @FXML

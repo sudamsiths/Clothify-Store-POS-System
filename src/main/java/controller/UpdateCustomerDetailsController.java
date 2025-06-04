@@ -1,5 +1,8 @@
 package controller;
 
+import Servicenew.ServiceFactory;
+import Servicenew.custom.EmployeeService;
+import Servicenew.custom.impl.Employeeimpl;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -10,9 +13,10 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import model.Employee;
 import util.CRUDutil;
+import util.ServiceType;
 
-import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
 
 public class UpdateCustomerDetailsController {
 
@@ -35,19 +39,11 @@ public class UpdateCustomerDetailsController {
 
     @FXML
     public void loadTable() throws SQLException {
-        ObservableList<Employee> objectObservableList = FXCollections.observableArrayList();
+        Employeeimpl employeeimpl = new Employeeimpl();
+        List<Employee> employeeList = employeeimpl.getAll();
 
-        ResultSet resultSet = CRUDutil.execute("select * from customer");
-        while (resultSet.next()) {
-            objectObservableList.add(new Employee(
-                    resultSet.getString(1),
-                    resultSet.getString(2),
-                    resultSet.getString(3),
-                    resultSet.getString(4),
-                    resultSet.getString(5),
-                    resultSet.getString(6)
-            ));
-        }
+        ObservableList<Employee> objectObservableList = FXCollections.observableArrayList(employeeList);
+
         colid.setCellValueFactory(new PropertyValueFactory<>("id"));
         colname.setCellValueFactory(new PropertyValueFactory<>("name"));
         colnic.setCellValueFactory(new PropertyValueFactory<>("nic"));
@@ -66,19 +62,10 @@ public class UpdateCustomerDetailsController {
 
     public void btnsearchOnAction(ActionEvent actionEvent) throws SQLException {
         String search = txtsearch.getText();
-        ObservableList<Employee> objectObservableList = FXCollections.observableArrayList();
 
-        ResultSet resultSet = CRUDutil.execute("select * from customer where id = ?", search);
-        while (resultSet.next()){
-            objectObservableList.add(new Employee(
-                    resultSet.getString(1),
-                    resultSet.getString(2),
-                    resultSet.getString(3),
-                    resultSet.getString(4),
-                    resultSet.getString(5),
-                    resultSet.getString(6)
-            ));
-        }
+        EmployeeService employeeService = ServiceFactory.getInstance().getServiceType(ServiceType.Employee);
+        Employee foundEmployee = employeeService.search(search);
+
         colid.setCellValueFactory(new PropertyValueFactory<>("id"));
         colname.setCellValueFactory(new PropertyValueFactory<>("name"));
         colnic.setCellValueFactory(new PropertyValueFactory<>("nic"));
@@ -86,8 +73,13 @@ public class UpdateCustomerDetailsController {
         coldob.setCellValueFactory(new PropertyValueFactory<>("DOB"));
         colcontact.setCellValueFactory(new PropertyValueFactory<>("contactno"));
 
-        tblview.setItems(objectObservableList);
+        ObservableList<Employee> employeeList = FXCollections.observableArrayList();
+        if (foundEmployee != null) {
+            employeeList.add(foundEmployee);
+        }
+        tblview.setItems(employeeList);
     }
+
 
     public void btnviewallOnAction(ActionEvent actionEvent) throws SQLException {
 

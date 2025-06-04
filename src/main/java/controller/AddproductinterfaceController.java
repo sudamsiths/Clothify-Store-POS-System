@@ -24,10 +24,6 @@ public class AddproductinterfaceController {
     @FXML
     private ChoiceBox<String> categoryChoiceBox;
 
-//    @FXML
-//    public void initialize() {
-//        categoryChoiceBox.getItems().addAll("Men", "Women", "Kids");
-//    }
 
     @FXML
     private void handleChooseImage() {

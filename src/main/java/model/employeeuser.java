@@ -11,7 +11,7 @@ import lombok.ToString;
 @NoArgsConstructor
 @ToString
 
-public class employeeuser {
+public class employeeuser extends Employee {
     private String email;
     private String password;
 

@@ -5,16 +5,18 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
+import java.sql.Date;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-
 public class Employee {
     private String id;
     private String name;
     private String nic;
     private String address;
-    private String DOB;
+    private Date DOB;
     private String contactno;
+
 }

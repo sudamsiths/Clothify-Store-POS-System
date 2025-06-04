@@ -1,15 +1,16 @@
 package controller;
 
-import db.DBConnection;
+import Servicenew.ServiceFactory;
+import Servicenew.custom.EmployeeService;
+import Servicenew.custom.impl.Employeeimpl;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import util.CRUDutil;
+import model.employeeuser;
+import util.ServiceType;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 public class CreateUserAccountController {
@@ -22,17 +23,26 @@ public class CreateUserAccountController {
 
     @FXML
     void CreateAccountOnAcrion(ActionEvent event) throws SQLException {
-        Connection connection = DBConnection.getInstance().getConnection();
-        PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO user (email, password) VALUES (?, ?)");
-        preparedStatement.setString(1, txtemail.getText());
-        preparedStatement.setString(2, txtpassword.getText());
+        String email = txtemail.getText();
+        String password = txtpassword.getText();
 
-        int i = preparedStatement.executeUpdate();
-        if (i > 0) {
+        if (email == null || password == null) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("Invalid Input");
+            alert.setContentText("Please enter both email and password.");
+            alert.showAndWait();
+            return;
+        }
+        employeeuser employeeuser =new employeeuser(email , password);
+        EmployeeService employeeService = ServiceFactory.getInstance().getServiceType(ServiceType.employeeuser);
+        Boolean account = employeeService.createAccount(employeeuser);
+
+        if (account) {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Success");
             alert.setHeaderText("User Registered Successfully");
-            alert.setContentText("User Email: " + txtemail.getText());
+            alert.setContentText("User Email: " + email);
             alert.showAndWait();
             cleartext();
         } else {
@@ -42,8 +52,6 @@ public class CreateUserAccountController {
             alert.setContentText("Unable to create user account.");
             alert.showAndWait();
         }
-
-        preparedStatement.close();
     }
 
     public void cleartext() {

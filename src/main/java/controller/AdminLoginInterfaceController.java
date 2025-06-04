@@ -22,7 +22,7 @@ public class AdminLoginInterfaceController {
     @FXML
     void adminloginOnAction(ActionEvent event) throws IOException {
         String adminemail = "clothify@sample.com";
-        String adminpassword = "clothify@sheshan";
+        String adminpassword = "123";
 
         String email = txtadminlogin.getText();
         String password = txtadminpassword.getText();
