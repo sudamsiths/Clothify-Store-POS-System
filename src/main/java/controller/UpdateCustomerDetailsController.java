@@ -8,7 +8,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
-import model.entity.Employee;
+import model.Employee;
 import util.CRUDutil;
 
 import java.sql.ResultSet;
@@ -52,7 +52,7 @@ public class UpdateCustomerDetailsController {
         colname.setCellValueFactory(new PropertyValueFactory<>("name"));
         colnic.setCellValueFactory(new PropertyValueFactory<>("nic"));
         coladdress.setCellValueFactory(new PropertyValueFactory<>("address"));
-        coldob.setCellValueFactory(new PropertyValueFactory<>("dob"));
+        coldob.setCellValueFactory(new PropertyValueFactory<>("DOB"));
         colcontact.setCellValueFactory(new PropertyValueFactory<>("contactno"));
 
         tblview.setItems(objectObservableList);
@@ -79,10 +79,18 @@ public class UpdateCustomerDetailsController {
                     resultSet.getString(6)
             ));
         }
+        colid.setCellValueFactory(new PropertyValueFactory<>("id"));
+        colname.setCellValueFactory(new PropertyValueFactory<>("name"));
+        colnic.setCellValueFactory(new PropertyValueFactory<>("nic"));
+        coladdress.setCellValueFactory(new PropertyValueFactory<>("address"));
+        coldob.setCellValueFactory(new PropertyValueFactory<>("DOB"));
+        colcontact.setCellValueFactory(new PropertyValueFactory<>("contactno"));
+
         tblview.setItems(objectObservableList);
     }
 
     public void btnviewallOnAction(ActionEvent actionEvent) throws SQLException {
+
         loadTable();
     }
 }
