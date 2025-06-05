@@ -1,8 +1,7 @@
 package controller;
 
-import Servicenew.ServiceFactory;
-import Servicenew.custom.EmployeeService;
-import Servicenew.custom.impl.Employeeimpl;
+import Service.ServiceFactory;
+import Service.custom.EmployeeService;
 import db.DBConnection;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -12,7 +11,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import model.Employee;
+import DTO.Employee;
 import util.ServiceType;
 
 import java.sql.*;
@@ -40,6 +39,7 @@ public class AddUserInterfaceController {
     private TextField txtname;
 
 
+    EmployeeService customerService = ServiceFactory.getInstance().getServiceType(ServiceType.Employee);
 
     @FXML
     public void initialize() throws SQLException {
@@ -80,7 +80,6 @@ public class AddUserInterfaceController {
             String address = txtaddress.getText();
             String contactNo = txtconatcNO.getText();
 
-
             Date dob = null;
             if (txtDOB.getValue() != null) {
                 dob = Date.valueOf(txtDOB.getValue());
@@ -93,12 +92,10 @@ public class AddUserInterfaceController {
                 return;
             }
 
-            Employee employee = new Employee(nextId,name,nic,address, dob, contactNo);
+            Employee employee = new Employee(nextId, name, nic, address, dob, contactNo);
+            Boolean b = customerService.addEmployee(employee);
 
-            EmployeeService employeeService = ServiceFactory.getInstance().getServiceType(ServiceType.Employee);
-            Boolean isAdded = employeeService.addEmployee(employee);
-
-            if (isAdded) {
+            if (b) {
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("Success");
                 alert.setHeaderText("Employee Added Successfully");
@@ -114,8 +111,14 @@ public class AddUserInterfaceController {
                 alert.setContentText("Could not add employee. Please try again.");
                 alert.showAndWait();
             }
-
-        } catch (SQLException e){}
+        } catch (SQLException e) {
+            e.printStackTrace(); // For debugging
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Database Error");
+            alert.setHeaderText("SQL Exception Occurred");
+            alert.setContentText("Error: " + e.getMessage());
+            alert.showAndWait();
+        }
     }
 
     @FXML

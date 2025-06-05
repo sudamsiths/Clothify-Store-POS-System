@@ -1,22 +1,21 @@
 package controller;
 
-import Servicenew.ServiceFactory;
-import Servicenew.custom.EmployeeService;
-import Servicenew.custom.impl.Employeeimpl;
+import Service.ServiceFactory;
+import Service.custom.EmployeeService;
+import Service.custom.impl.EmployeeServiceimpl;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import model.Employee;
+import DTO.Employee;
 import util.CRUDutil;
 import util.ServiceType;
 
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Optional;
 
 public class UpdateCustomerDetailsController {
 
@@ -34,12 +33,13 @@ public class UpdateCustomerDetailsController {
     @FXML
     private TableColumn colnic;
     @FXML
-    private TableView tblview;
+    private  TableView<Employee> tblview;
 
+    EmployeeService employeeService = ServiceFactory.getInstance().getServiceType(ServiceType.Employee);
 
     @FXML
     public void loadTable() throws SQLException {
-        Employeeimpl employeeimpl = new Employeeimpl();
+        EmployeeServiceimpl employeeimpl = new EmployeeServiceimpl();
         List<Employee> employeeList = employeeimpl.getAll();
 
         ObservableList<Employee> objectObservableList = FXCollections.observableArrayList(employeeList);
@@ -54,16 +54,33 @@ public class UpdateCustomerDetailsController {
         tblview.setItems(objectObservableList);
     }
 
+
+    @FXML
     public void btnDeleteOnAction(ActionEvent actionEvent) throws SQLException {
         Employee selectedCustomer = (Employee) tblview.getSelectionModel().getSelectedItem();
-        CRUDutil.execute("delete from customer where id = ?", selectedCustomer.getId());
-        loadTable();
+        if (selectedCustomer == null) {
+            showAlert("Please select an employee to delete");
+            return;
+        }
+
+        Alert confirmationAlert = new Alert(Alert.AlertType.CONFIRMATION);
+        confirmationAlert.setTitle("Delete Confirmation");
+        confirmationAlert.setHeaderText("Delete Employee");
+        confirmationAlert.setContentText("Are you sure you want to delete this employee?");
+
+        Optional<ButtonType> result = confirmationAlert.showAndWait();
+
+        if (result.isPresent() && result.get() == ButtonType.OK) {
+            CRUDutil.execute("delete from customer where id = ?", selectedCustomer.getId());
+            loadTable();
+        }
+
     }
 
     public void btnsearchOnAction(ActionEvent actionEvent) throws SQLException {
         String search = txtsearch.getText();
 
-        EmployeeService employeeService = ServiceFactory.getInstance().getServiceType(ServiceType.Employee);
+
         Employee foundEmployee = employeeService.search(search);
 
         colid.setCellValueFactory(new PropertyValueFactory<>("id"));
@@ -84,5 +101,12 @@ public class UpdateCustomerDetailsController {
     public void btnviewallOnAction(ActionEvent actionEvent) throws SQLException {
 
         loadTable();
+    }
+    private void showAlert(String message) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Information");
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
     }
 }

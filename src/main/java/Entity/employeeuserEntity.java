@@ -1,4 +1,4 @@
-package model;
+package Entity;
 
 
 import lombok.AllArgsConstructor;
@@ -11,7 +11,7 @@ import lombok.ToString;
 @NoArgsConstructor
 @ToString
 
-public class employeeuser extends Employee {
+public class employeeuserEntity extends EmployeeEntity {
     private String email;
     private String password;
 

@@ -1,14 +1,13 @@
 package controller;
 
-import Servicenew.ServiceFactory;
-import Servicenew.custom.EmployeeService;
-import Servicenew.custom.impl.Employeeimpl;
+import Service.ServiceFactory;
+import Service.custom.EmployeeService;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import model.employeeuser;
+import DTO.employeeuser;
 import util.ServiceType;
 
 import java.sql.SQLException;
@@ -21,6 +20,7 @@ public class CreateUserAccountController {
     @FXML
     private PasswordField txtpassword;
 
+    EmployeeService employeeService = ServiceFactory.getInstance().getServiceType(ServiceType.employeeuser);
     @FXML
     void CreateAccountOnAcrion(ActionEvent event) throws SQLException {
         String email = txtemail.getText();
@@ -35,7 +35,6 @@ public class CreateUserAccountController {
             return;
         }
         employeeuser employeeuser =new employeeuser(email , password);
-        EmployeeService employeeService = ServiceFactory.getInstance().getServiceType(ServiceType.employeeuser);
         Boolean account = employeeService.createAccount(employeeuser);
 
         if (account) {

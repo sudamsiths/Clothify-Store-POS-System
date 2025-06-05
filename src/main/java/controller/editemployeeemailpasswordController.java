@@ -1,12 +1,12 @@
 package controller;
 
-import Servicenew.ServiceFactory;
-import Servicenew.custom.EmployeeService;
-import Servicenew.custom.impl.Employeeimpl;
+import Service.ServiceFactory;
+import Service.custom.EmployeeService;
+import Service.custom.impl.EmployeeServiceimpl;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import model.employeeuser;
+import DTO.employeeuser;
 import util.CRUDutil;
 import util.ServiceType;
 
@@ -24,6 +24,7 @@ public class editemployeeemailpasswordController {
     private PasswordField txtpassword;
 
     private String originalEmail;
+    EmployeeService employeeService = ServiceFactory.getInstance().getServiceType(ServiceType.Employee);
 
     @FXML
     void searchbtnOnAction(ActionEvent event) throws SQLException {
@@ -38,20 +39,23 @@ public class editemployeeemailpasswordController {
             return;
         }
 
-        EmployeeService employeeService = ServiceFactory.getInstance().getServiceType(ServiceType.Employee);
-        employeeuser user = employeeService.searchById(searchEmail);
+        EmployeeService customerService = new EmployeeServiceimpl();
+        employeeuser employeeuser = customerService.searchById(searchEmail);
 
-        if (user != null) {
+        txtemail1.setText(searchEmail);
+        txtpassword.setText(searchEmail);
+
+        if (employeeuser != null) {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("User Found");
             alert.setHeaderText("Search Result");
             alert.setContentText("User Found Successfully");
             alert.showAndWait();
 
-            originalEmail = user.getEmail();
+            originalEmail = employeeuser.getEmail();
 
-            txtemail1.setText(user.getEmail());
-            txtpassword.setText(user.getPassword());
+            txtemail1.setText(employeeuser.getEmail());
+            txtpassword.setText(employeeuser.getPassword());
         } else {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Not Found");
@@ -64,6 +68,7 @@ public class editemployeeemailpasswordController {
             originalEmail = null;
         }
     }
+
 
     @FXML
     void updatebtnOnAction(ActionEvent event) throws SQLException {

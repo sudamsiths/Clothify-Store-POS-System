@@ -1,4 +1,4 @@
-package model;
+package Entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -11,7 +11,7 @@ import java.sql.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-public class Employee {
+public class EmployeeEntity {
     private String id;
     private String name;
     private String nic;
