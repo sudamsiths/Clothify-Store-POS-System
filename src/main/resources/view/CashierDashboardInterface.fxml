@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CashierDashboardInterfaceController">
+    <top>
+        <!-- Header Section -->
+        <AnchorPane prefHeight="80.0" style="-fx-background-color: #404a54;">
+            <children>
+                <HBox alignment="CENTER_LEFT" layoutX="20.0" layoutY="15.0" spacing="15.0">
+                    <children>
+                        <Label text="Clothify Store - Cashier Dashboard" textFill="WHITE">
+                            <font>
+                                <Font name="System Bold" size="24.0" />
+                            </font>
+                        </Label>
+                    </children>
+                </HBox>
+                <HBox alignment="CENTER_RIGHT" layoutX="600.0" layoutY="20.0" spacing="15.0" />
+                  <Label fx:id="lblCashierName" layoutX="962.0" layoutY="30.0" text="Welcome, John Doe" textFill="WHITE">
+                      <font>
+                          <Font size="16.0" />
+                      </font>
+                  </Label>
+                  <Button fx:id="btnLogout" layoutX="1118.0" layoutY="27.0" onAction="#handleLogout" style="-fx-background-color: #A23B72;" text="Logout" textFill="WHITE">
+                      <font>
+                          <Font name="System Bold" size="14.0" />
+                      </font>
+                  </Button>
+            </children>
+        </AnchorPane>
+    </top>
+    <left>
+        <!-- Navigation Panel -->
+        <VBox prefHeight="561.0" prefWidth="250.0" spacing="10.0" style="-fx-background-color: #404a54;">
+            <padding>
+                <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+            </padding>
+            <children>
+                <Label text="CASHIER FUNCTIONS" textFill="WHITE">
+                    <font>
+                        <Font name="System Bold" size="16.0" />
+                    </font>
+                </Label>
+
+                      <Button fx:id="btnViewProducts" alignment="BASELINE_LEFT" onAction="#handleViewProducts" prefHeight="45.0" prefWidth="210.0" style="-fx-background-color: #C73E1D;" text="View Products" textFill="WHITE">
+                    <font>
+                        <Font name="System Bold" size="14.0" />
+                    </font>
+                </Button>
+
+                      <Button fx:id="btnSearchProducts" alignment="BASELINE_LEFT" onAction="#handleSearchProducts" prefHeight="45.0" prefWidth="210.0" style="-fx-background-color: #C73E1D;" text="Search Products" textFill="WHITE">
+                    <font>
+                        <Font name="System Bold" size="14.0" />
+                    </font>
+                </Button>
+
+                      <Button fx:id="btnViewCategories" alignment="BASELINE_LEFT" onAction="#handleViewCategories" prefHeight="45.0" prefWidth="210.0" style="-fx-background-color: #C73E1D;" text="View Categories" textFill="WHITE">
+                    <font>
+                        <Font name="System Bold" size="14.0" />
+                    </font>
+                </Button>
+            </children>
+        </VBox>
+    </left>
+    <center>
+        <!-- Main Content Area -->
+        <AnchorPane prefHeight="600.0" prefWidth="954.0" style="-fx-background-color: #FFFFFF;">
+            <children>
+                <!-- Search Section -->
+                <VBox layoutX="37.0" layoutY="6.0" spacing="15.0">
+                    <children>
+                        <Label prefHeight="26.0" prefWidth="191.0" text="Product Search" textFill="#2E86AB">
+                            <font>
+                                <Font name="System Bold" size="26.0" />
+                            </font>
+                        </Label>
+
+                        <HBox alignment="CENTER_LEFT" spacing="15.0">
+                            <children>
+                                <TextField fx:id="txtSearchProduct" prefHeight="49.0" prefWidth="400.0" promptText="Enter product name or ID..." style="-fx-border-color: #2E86AB; -fx-border-width: 2px;">
+                           <font>
+                              <Font size="15.0" />
+                           </font></TextField>
+                                <Button fx:id="btnSearch" onAction="#handleSearchProduct" prefHeight="39.0" prefWidth="73.0" style="-fx-background-color: #2E86AB;" text="Search" textFill="WHITE">
+                                    <font>
+                                        <Font name="System Bold" size="14.0" />
+                                    </font>
+                                </Button>
+                                <Button fx:id="btnClearSearch" onAction="#handleClearSearch" prefHeight="41.0" prefWidth="77.0" style="-fx-background-color: #F18F01;" text="Clear" textFill="WHITE">
+                                    <font>
+                                        <Font name="System Bold" size="14.0" />
+                                    </font>
+                                </Button>
+                            </children>
+                        </HBox>
+                    </children>
+                </VBox>
+
+                <!-- Products Table -->
+                <VBox layoutX="37.0" layoutY="107.0" prefHeight="422.0" prefWidth="771.0" spacing="10.0">
+                    <children>
+                        <Label prefHeight="50.0" prefWidth="234.0" text="Available Products" textFill="#2E86AB">
+                            <font>
+                                <Font name="System Bold" size="18.0" />
+                            </font>
+                        </Label>
+
+                        <TableView fx:id="tblProducts" prefHeight="364.0" prefWidth="734.0" style="-fx-border-color: #2E86AB; -fx-border-width: 2px;">
+                            <columns>
+                                <TableColumn fx:id="colProductId" prefWidth="80.0" text="ID" />
+                                <TableColumn fx:id="colProductName" prefWidth="268.0" text="Product Name" />
+                                <TableColumn fx:id="colCategory" prefWidth="141.0" text="Category" />
+                                <TableColumn fx:id="colSize" prefWidth="96.0" text="Size" />
+                                <TableColumn fx:id="colPrice" prefWidth="94.0" text="Price (Rs.)" />
+                                <TableColumn fx:id="colQuantity" prefWidth="89.0" text="Available Qty" />
+                            </columns>
+                        </TableView>
+                    </children>
+                </VBox>
+
+                <!-- Action Buttons -->
+                <HBox layoutX="37.0" layoutY="540.0" spacing="15.0">
+                    <children>
+                        <Button fx:id="btnRefreshProducts" onAction="#handleRefreshProducts" style="-fx-background-color: #2E86AB;" text="Refresh Products" textFill="WHITE">
+                            <font>
+                                <Font name="System Bold" size="14.0" />
+                            </font>
+                        </Button>
+
+                        <Button fx:id="btnViewProductDetails" onAction="#handleViewProductDetails" style="-fx-background-color: #F18F01;" text="View Details" textFill="WHITE">
+                            <font>
+                                <Font name="System Bold" size="14.0" />
+                            </font>
+                        </Button>
+                    </children>
+                </HBox>
+
+                <!-- Status Bar -->
+                <HBox alignment="CENTER_LEFT" layoutX="30.0" layoutY="580.0" spacing="20.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#404a54" height="613.0" layoutX="860.0" layoutY="-11.0" stroke="#404a54" strokeType="INSIDE" width="94.0" />
+            </children>
+        </AnchorPane>
+    </center>
+    <bottom>
+        <!-- Footer -->
+        <AnchorPane prefHeight="40.0" style="-fx-background-color: #404a54;">
+            <children>
+                <Label layoutX="20.0" layoutY="10.0" text="Clothify Store Management System | Cashier Access Level" textFill="WHITE">
+                    <font>
+                        <Font size="14.0" />
+                    </font>
+                </Label>
+            </children>
+        </AnchorPane>
+    </bottom>
+</BorderPane>

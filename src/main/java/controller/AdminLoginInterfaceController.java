@@ -22,7 +22,7 @@ public class AdminLoginInterfaceController {
     @FXML
     void adminloginOnAction(ActionEvent event) throws IOException {
         String adminemail = "clothify@sample.com";
-        String adminpassword = "123";
+        String adminpassword = "clothify@sheshan";
 
         String email = txtadminlogin.getText();
         String password = txtadminpassword.getText();
@@ -38,5 +38,11 @@ public class AdminLoginInterfaceController {
             alert.setContentText("Invalid email or password");
             alert.showAndWait();
         }
+    }
+
+    public void CashieroginOnAction(ActionEvent actionEvent) throws IOException {
+        Stage s1 = new Stage();
+        s1.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/CashierLoginInterface.fxml"))));
+        s1.show();
     }
 }

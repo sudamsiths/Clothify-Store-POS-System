@@ -27,7 +27,7 @@ public class EmployeeServiceimpl implements EmployeeService {
     }
 
     @Override
-    public Boolean updateEmployee(Employee employee) {
+    public Boolean updateEmployee(employeeuser employee) throws SQLException {
         return null;
     }
 

@@ -1,4 +1,4 @@
-//package repository;
-//
-//public interface SuperRepository {
-//}
+package repository;
+
+public interface SuperRepository {
+}

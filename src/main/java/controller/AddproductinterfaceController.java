@@ -19,6 +19,7 @@ public class AddproductinterfaceController {
     public TextField txtsizeitems;
     public TextField txtpriceadditems;
     public TextField txtsupplyerid;
+    public TextField txtqtyfield;
     @FXML
     private ImageView productImage;
     @FXML

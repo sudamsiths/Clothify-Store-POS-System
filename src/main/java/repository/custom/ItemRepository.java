@@ -1,4 +1,4 @@
-//package repository.custom;
-//
-//public interface ItemRepository {
-//}
+package repository.custom;
+
+public interface ItemRepository {
+}

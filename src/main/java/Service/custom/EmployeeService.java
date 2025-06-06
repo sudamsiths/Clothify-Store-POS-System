@@ -10,7 +10,7 @@ import java.util.List;
 
 public interface EmployeeService extends SuperService {
     Boolean addEmployee(Employee employee) throws SQLException;
-    Boolean updateEmployee(Employee employee);
+    Boolean updateEmployee(employeeuser employee) throws SQLException;
     employeeuser searchById(String email) throws SQLException;
     List<Employee> getAll() throws SQLException;
     List<Employee>deletebyid(String id) throws SQLException;

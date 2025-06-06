@@ -1,4 +1,4 @@
-package Entity;
+package DTO;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -9,7 +9,7 @@ import lombok.ToString;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-public class ProductEntity {
+public class Products {
     private String id;
     private String supplier_id;
     private String name;
@@ -18,5 +18,4 @@ public class ProductEntity {
     private Double price;
     private Integer qty;
     private String image_url;
-
 }
