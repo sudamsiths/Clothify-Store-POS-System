@@ -13,7 +13,7 @@ public class UserServiceListController {
     @FXML
     void AddNewSupplierOnAction(ActionEvent event) throws IOException {
         Stage s1 = new Stage();
-        s1.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/AddProductInterface.fxml"))));
+        s1.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/AddSupplierInterface.fxml"))));
         s1.show();
     }
 
