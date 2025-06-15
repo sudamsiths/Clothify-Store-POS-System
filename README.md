@@ -2,6 +2,8 @@
 -- TABLE CREATION
 -- ========================================
 
+create database clothify_Store;
+
 CREATE TABLE categories (
     category_id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     category_name VARCHAR(50) NOT NULL ,
@@ -33,10 +35,10 @@ CREATE TABLE products (
     size VARCHAR(50),
     price DECIMAL(10,2),
     image_url VARCHAR(500),
-    qty INT DEFAULT 0,
+    qty INT DEFAULT 0
 );
 
 CREATE TABLE user (
-    email VARCHAR(35) NOT NULL PRIMARY KEY,
+    email VARCHAR(35) ,
     password VARCHAR(35)
 );
