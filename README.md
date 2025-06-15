@@ -34,7 +34,6 @@ CREATE TABLE products (
     price DECIMAL(10,2),
     image_url VARCHAR(500),
     qty INT DEFAULT 0,
-    FOREIGN KEY (supplier_id) REFERENCES suppliers(supplier_id) ON DELETE SET NULL
 );
 
 CREATE TABLE user (
