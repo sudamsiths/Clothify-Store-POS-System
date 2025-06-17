@@ -1,13 +1,11 @@
 package DTO;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 
 import java.sql.Date;
 
-@Data
+@Setter
+@Getter
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
@@ -20,9 +18,5 @@ public class Employee extends employeeuser {
     private String contactno;
 
 
-    public Employee(String id, String name, String address, double salary) {
-    }
 
-    public Employee(String email, String password) {
-    }
 }

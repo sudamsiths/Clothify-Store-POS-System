@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
 <?import java.lang.String?>
 <?import javafx.collections.FXCollections?>
 <?import javafx.scene.control.Button?>
@@ -113,11 +114,6 @@
          <Font name="Anton Regular" size="23.0" />
       </font>
    </Label>
-   <TextField fx:id="txtsupplyerid" layoutX="831.0" layoutY="131.0" prefHeight="37.0" prefWidth="223.0">
-      <font>
-         <Font name="Arial Rounded MT Bold" size="17.0" />
-      </font>
-   </TextField>
    <Label layoutX="685.0" layoutY="482.0" prefHeight="37.0" prefWidth="132.0" text="QTY             :">
       <font>
          <Font name="Anton Regular" size="23.0" />
@@ -128,5 +124,6 @@
          <Font name="Arial Rounded MT Bold" size="17.0" />
       </font>
    </TextField>
+   <JFXComboBox fx:id="cmbSupplierid" layoutX="826.0" layoutY="125.0" prefHeight="37.0" prefWidth="223.0" />
 
 </AnchorPane>

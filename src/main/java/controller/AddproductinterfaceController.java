@@ -1,11 +1,13 @@
 package controller;
 
-import DTO.Employee;
 import DTO.Products;
+import DTO.Supplier;
 import Service.ServiceFactory;
-import Service.custom.EmployeeService;
 import Service.custom.ProductService;
+import Service.custom.SupplierService;
+import com.jfoenix.controls.JFXComboBox;
 import db.DBConnection;
+import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -22,8 +24,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
 
-public class AddproductinterfaceController {
+public class AddproductinterfaceController{
 
     public TextField txtidAdditem;
     public TextField txtitemname;
@@ -31,6 +34,7 @@ public class AddproductinterfaceController {
     public TextField txtpriceadditems;
     public TextField txtsupplyerid;
     public TextField txtqtyfield;
+    public JFXComboBox cmbSupplierid;
     @FXML
     private ImageView productImage;
     @FXML
@@ -38,6 +42,7 @@ public class AddproductinterfaceController {
 
 
     ProductService productService = ServiceFactory.getInstance().getServiceType(ServiceType.Product);
+    SupplierService supplierService =ServiceFactory.getInstance().getServiceType(ServiceType.Supplier);
 
     private String selectedImagePath;
 
@@ -58,10 +63,25 @@ public class AddproductinterfaceController {
         }
     }
 
-    public void initialize() throws SQLException {
-        String nextId = generateNextProductID();
-        txtidAdditem.setText(nextId);
-        txtidAdditem.setEditable(false);
+    public void initialize() {
+        try {
+            String nextId = generateNextProductID();
+            txtidAdditem.setText(nextId);
+            txtidAdditem.setEditable(false);
+            loadCustomerIDs();
+
+            cmbSupplierid.getSelectionModel().selectedItemProperty().addListener((observableValue, oldVal, newVal) -> {
+                if (newVal != null) {
+                    setValuesToSupplierText((String) newVal);
+                }
+            });
+        } catch (SQLException e) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Initialization Error");
+            alert.setHeaderText("Failed to initialize form");
+            alert.setContentText("Error: " + e.getMessage());
+            alert.showAndWait();
+        }
     }
 
     public String IdIncrement(String id) {
@@ -88,33 +108,71 @@ public class AddproductinterfaceController {
     }
 
     public void btnItemAddOnAction(ActionEvent actionEvent) throws SQLException {
-        String nextId= txtidAdditem.getText();
-        String supplierid=txtsupplyerid.getText();
-        String name=txtitemname.getText();
-        String category=categoryChoiceBox.getValue();
-        String size=txtsizeitems.getText();
-        Double price=Double.parseDouble(txtpriceadditems.getText());
-        Integer qty=Integer.parseInt(txtqtyfield.getText());
-        String image = selectedImagePath != null ? selectedImagePath : "";
+        try {
+            String nextId = txtidAdditem.getText();
 
-        Products products = new Products(nextId, supplierid,name,category,size,price,qty,image);
-        boolean b = productService.addProduct(products);
+            String supplierid = (String) cmbSupplierid.getSelectionModel().getSelectedItem();
 
-        if (b) {
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Success");
-            alert.setHeaderText("Product Added Successfully");
-            alert.setContentText("Product ID: " + nextId);
-            alert.showAndWait();
+            String name = txtitemname.getText();
+            String category = categoryChoiceBox.getValue();
+            String size = txtsizeitems.getText();
+            Double price = Double.parseDouble(txtpriceadditems.getText());
+            Integer qty = Integer.parseInt(txtqtyfield.getText());
+            String image = selectedImagePath != null ? selectedImagePath : "";
 
-            initialize();
-        } else {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Error");
-            alert.setHeaderText("Failed to Add Product");
-            alert.setContentText("Could not add Product. Please try again.");
-            alert.showAndWait();
+            if (supplierid == null || supplierid.isEmpty()) {
+                Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.setTitle("Validation Error");
+                alert.setHeaderText("Please select a supplier");
+                alert.setContentText("You must select a supplier from the dropdown.");
+                alert.showAndWait();
+                return;
+            }
+
+            if (name.trim().isEmpty() || category == null || size.trim().isEmpty()) {
+                Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.setTitle("Validation Error");
+                alert.setHeaderText("Missing Required Fields");
+                alert.setContentText("Please fill in all required fields: Name, Category, and Size.");
+                alert.showAndWait();
+                return;
+            }
+
+            Products products = new Products(nextId, supplierid, name, category, size, price, qty, image);
+            boolean b = productService.addProduct(products);
+
+            if (b) {
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Success");
+                alert.setHeaderText("Product Added Successfully");
+                alert.setContentText("Product ID: " + nextId + "\nSupplier ID: " + supplierid);
+                alert.showAndWait();
+
+                clearForm();
+                initialize();
+            } else {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Error");
+                alert.setHeaderText("Failed to Add Product");
+                alert.setContentText("Could not add Product. Please try again.");
+                alert.showAndWait();
+            }
+        } catch (NumberFormatException e) {
+            throw new RuntimeException(e);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
         }
+    }
+
+        private void clearForm() {
+        txtitemname.clear();
+        txtsizeitems.clear();
+        txtpriceadditems.clear();
+        txtqtyfield.clear();
+        categoryChoiceBox.getSelectionModel().clearSelection();
+        cmbSupplierid.getSelectionModel().clearSelection();
+        productImage.setImage(null);
+        selectedImagePath = null;
     }
 
     public void btnShowItemsOnAction(ActionEvent actionEvent) throws IOException {
@@ -122,4 +180,17 @@ public class AddproductinterfaceController {
         s1.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/ShowProductInterface.fxml"))));
         s1.show();
     }
+
+    private void loadCustomerIDs() throws SQLException {
+        List<String> customerIds = supplierService.getCustomerIds();
+        cmbSupplierid.setItems(FXCollections.observableArrayList(customerIds));
+    }
+    private void setValuesToSupplierText(String supplierId) {
+        try {
+            Supplier supplier = supplierService.searchById(supplierId);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
 }
