@@ -1,10 +1,13 @@
 package Service.custom.impl;
 
+import DTO.Employee;
 import DTO.Products;
 import Service.custom.ProductService;
 import util.CRUDutil;
 
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class ProductServiceimpl implements ProductService {
@@ -25,22 +28,63 @@ public class ProductServiceimpl implements ProductService {
     }
 
     @Override
-    public boolean updateProduct(Products products) {
-        return false;
+    public boolean updateProduct(Products products) throws SQLException {
+        String sql = "UPDATE products SET supplier_id=?, name=?, category=?, size=?, price=?, qty=? WHERE id=?";
+
+        Boolean result = CRUDutil.execute(sql,
+                products.getSupplier_id(),
+                products.getName(),
+                products.getCategory(),
+                products.getSize(),
+                products.getPrice(),
+                products.getQty(),
+                products.getId()
+        );
+
+        return result;
     }
 
     @Override
-    public Products searchProduct(String id) {
-        return null;
+    public Products searchProduct(String search) throws SQLException {
+        ResultSet resultSet = CRUDutil.execute("SELECT * FROM products WHERE id = ?", search);
+
+        if (resultSet.next()) {
+            return new Products(
+                    resultSet.getString("supplier_id"),
+                    resultSet.getString("name"),
+                    resultSet.getString("category"),
+                    resultSet.getString("size"),
+                    resultSet.getDouble("price"),
+                    resultSet.getInt("qty")
+            );
+        }
+        return null; // Product not found
     }
 
     @Override
-    public List<Products> getAllProduct() {
-        return List.of();
+    public List<Products> getAllProduct() throws SQLException {
+        List<Products> productsList = new ArrayList<>();
+
+        try (ResultSet resultSet = CRUDutil.execute("select * from products")) {
+            while (resultSet.next()) {
+               Products products = new Products();
+                products.setId(resultSet.getString("id"));
+                products.setSupplier_id(resultSet.getString("supplier_id"));
+                products.setName(resultSet.getString("name"));
+                products.setCategory(resultSet.getString("category"));
+                products.setPrice(resultSet.getDouble("price"));
+                products.setSize(resultSet.getString("size"));
+
+                productsList.add(products);
+            }
+        }
+
+        return productsList;
     }
 
     @Override
     public List<Products> deleteProducts(String id) {
         return List.of();
     }
+
 }

@@ -10,9 +10,9 @@ import java.util.List;
 
 public interface ProductService extends SuperService {
     boolean addProduct(Products products) throws SQLException;
-    boolean updateProduct(Products products);
-    Products searchProduct(String id);
-    List<Products> getAllProduct();
+    boolean updateProduct(Products products) throws SQLException;
+    Products searchProduct(String id) throws SQLException;
+    List<Products> getAllProduct() throws SQLException;
     List<Products>deleteProducts(String id);
 
 }

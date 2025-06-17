@@ -54,7 +54,7 @@
          <Font name="Arial Rounded MT Bold" size="17.0" />
       </font>
    </TextField>
-   <Label layoutX="681.0" layoutY="306.0" prefHeight="37.0" prefWidth="118.0" text="Name          : ">
+   <Label layoutX="637.0" layoutY="306.0" prefHeight="37.0" prefWidth="162.0" text="Product Title      : ">
       <font>
          <Font name="Anton Regular" size="23.0" />
       </font>
