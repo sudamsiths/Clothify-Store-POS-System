@@ -1,11 +1,8 @@
 package controller;
 
-import DTO.Employee;
 import DTO.Products;
 import Service.ServiceFactory;
-import Service.SuperService;
 import Service.custom.ProductService;
-import Service.custom.impl.EmployeeServiceimpl;
 import Service.custom.impl.ProductServiceimpl;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -111,7 +108,7 @@ public class RemoveUpdateProductController {
     }
 
     @FXML
-    void btnsearchOnAction(ActionEvent event) throws SQLException {
+    void btnsearchOnAction() throws SQLException {
         String search = txtsearch.getText();
         ResultSet resultSet = CRUDutil.execute("SELECT * FROM products WHERE id = ?", search);
 
@@ -156,7 +153,7 @@ public class RemoveUpdateProductController {
         clearFields();
     }
 
-    private void showAlert(String message) {
+    public void showAlert(String message) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Information");
         alert.setHeaderText(null);

@@ -89,7 +89,7 @@
 
                         <HBox alignment="CENTER_LEFT" spacing="15.0">
                             <children>
-                                <TextField fx:id="txtSearchProduct" prefHeight="49.0" prefWidth="400.0" promptText="Enter product name or ID..." style="-fx-border-color: #2E86AB; -fx-border-width: 2px;">
+                                <TextField fx:id="txtsearch" prefHeight="49.0" prefWidth="400.0" promptText="Enter product name or ID..." style="-fx-border-color: #2E86AB; -fx-border-width: 2px;">
                            <font>
                               <Font size="15.0" />
                            </font></TextField>
@@ -117,14 +117,14 @@
                             </font>
                         </Label>
 
-                        <TableView fx:id="tblProducts" prefHeight="364.0" prefWidth="734.0" style="-fx-border-color: #2E86AB; -fx-border-width: 2px;">
+                        <TableView fx:id="tblProducts" prefHeight="327.0" prefWidth="771.0" style="-fx-border-color: #2E86AB; -fx-border-width: 2px;">
                             <columns>
-                                <TableColumn fx:id="colProductId" prefWidth="80.0" text="ID" />
-                                <TableColumn fx:id="colProductName" prefWidth="268.0" text="Product Name" />
-                                <TableColumn fx:id="colCategory" prefWidth="141.0" text="Category" />
-                                <TableColumn fx:id="colSize" prefWidth="96.0" text="Size" />
-                                <TableColumn fx:id="colPrice" prefWidth="94.0" text="Price (Rs.)" />
-                                <TableColumn fx:id="colQuantity" prefWidth="89.0" text="Available Qty" />
+                                <TableColumn fx:id="colid" prefWidth="80.0" text="ID" />
+                                <TableColumn fx:id="coltitle" prefWidth="216.0" text="Product Name" />
+                                <TableColumn fx:id="colcategory" prefWidth="161.0" text="Category" />
+                                <TableColumn fx:id="solsize" prefWidth="101.0" text="Size" />
+                                <TableColumn fx:id="colprice" prefWidth="102.0" text="Price (Rs.)" />
+                                <TableColumn fx:id="colqty" prefWidth="108.0" text="Available Qty" />
                             </columns>
                         </TableView>
                     </children>

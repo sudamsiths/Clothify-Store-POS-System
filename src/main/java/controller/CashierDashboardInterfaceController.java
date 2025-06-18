@@ -1,5 +1,13 @@
 package controller;
 
+import DTO.Employee;
+import DTO.Products;
+import Service.ServiceFactory;
+import Service.custom.EmployeeService;
+import Service.custom.ProductService;
+import Service.custom.impl.ProductServiceimpl;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -7,20 +15,22 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
+import util.CRUDutil;
+import util.ServiceType;
+
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.List;
 
 public class CashierDashboardInterfaceController {
 
-    @FXML
-    private Button btnAddProducts;
-
+    public TextField txtsearch;
     @FXML
     private Button btnClearSearch;
 
     @FXML
     private Button btnLogout;
-
-    @FXML
-    private Button btnManageEmployees;
 
     @FXML
     private Button btnRefreshProducts;
@@ -41,37 +51,36 @@ public class CashierDashboardInterfaceController {
     private Button btnViewProducts;
 
     @FXML
-    private TableColumn<?, ?> colCategory;
+    private TableColumn colcategory;
 
     @FXML
-    private TableColumn<?, ?> colPrice;
+    private TableColumn colid;
 
     @FXML
-    private TableColumn<?, ?> colProductId;
+    private TableColumn colprice;
 
     @FXML
-    private TableColumn<?, ?> colProductName;
+    private TableColumn colqty;
 
     @FXML
-    private TableColumn<?, ?> colQuantity;
-
-    @FXML
-    private TableColumn<?, ?> colSize;
+    private TableColumn coltitle;
 
     @FXML
     private Label lblCashierName;
 
     @FXML
-    private Label lblLastUpdated;
+    private TableColumn solsize;
 
     @FXML
-    private Label lblProductCount;
-
-    @FXML
-    private TableView<?> tblProducts;
+    private TableView tblProducts;
 
     @FXML
     private TextField txtSearchProduct;
+
+    RemoveUpdateProductController removeUpdateProductController = new RemoveUpdateProductController();
+    ProductService productService = ServiceFactory.getInstance().getServiceType(ServiceType.Product);
+
+
 
     @FXML
     void handleClearSearch(ActionEvent event) {
@@ -89,9 +98,27 @@ public class CashierDashboardInterfaceController {
     }
 
     @FXML
-    void handleSearchProduct(ActionEvent event) {
+    void handleSearchProduct(ActionEvent event) throws SQLException {
+        String search = txtsearch.getText();
 
+        Products foundProduct = productService.searchProduct(search);
+
+        colid.setCellValueFactory(new PropertyValueFactory<>("id"));
+        coltitle.setCellValueFactory(new PropertyValueFactory<>("name"));
+        colcategory.setCellValueFactory(new PropertyValueFactory<>("category"));
+        solsize.setCellValueFactory(new PropertyValueFactory<>("size"));
+        colprice.setCellValueFactory(new PropertyValueFactory<>("price"));
+        colqty.setCellValueFactory(new PropertyValueFactory<>("qty"));
+
+        ObservableList<Products> products = FXCollections.observableArrayList();
+
+        if (foundProduct != null) {
+            products.add(foundProduct);
+            removeUpdateProductController.showAlert("Product Found Successfully");
+        }
+        tblProducts.setItems(products);
     }
+
 
     @FXML
     void handleSearchProducts(ActionEvent event) {
@@ -107,10 +134,28 @@ public class CashierDashboardInterfaceController {
     void handleViewProductDetails(ActionEvent event) {
 
     }
+    @FXML
+    public void loadTable() throws SQLException {
+        ProductServiceimpl productServiceimpl = new ProductServiceimpl();
+        List<Products> products = productServiceimpl.getAllProduct();
+
+        ObservableList<Products> objectObservableList = FXCollections.observableArrayList(products);
+
+        colid.setCellValueFactory(new PropertyValueFactory<>("id"));
+        coltitle.setCellValueFactory(new PropertyValueFactory<>("name"));
+        colcategory.setCellValueFactory(new PropertyValueFactory<>("category"));
+        solsize.setCellValueFactory(new PropertyValueFactory<>("size"));
+        colprice.setCellValueFactory(new PropertyValueFactory<>("price"));
+        colqty.setCellValueFactory(new PropertyValueFactory<>("qty"));
+
+        System.out.println(objectObservableList);
+
+        tblProducts.setItems(objectObservableList);
+    }
 
     @FXML
-    void handleViewProducts(ActionEvent event) {
-
+    void handleViewProducts(ActionEvent event) throws SQLException {
+       loadTable();
     }
 
 }
