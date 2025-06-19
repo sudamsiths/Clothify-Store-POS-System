@@ -108,7 +108,7 @@ public class AddproductinterfaceController{
     }
 
     public void btnItemAddOnAction(ActionEvent actionEvent) throws SQLException {
-        try {
+
             String nextId = txtidAdditem.getText();
 
             String supplierid = (String) cmbSupplierid.getSelectionModel().getSelectedItem();
@@ -122,18 +122,8 @@ public class AddproductinterfaceController{
 
             if (supplierid == null || supplierid.isEmpty()) {
                 Alert alert = new Alert(Alert.AlertType.WARNING);
-                alert.setTitle("Validation Error");
                 alert.setHeaderText("Please select a supplier");
                 alert.setContentText("You must select a supplier from the dropdown.");
-                alert.showAndWait();
-                return;
-            }
-
-            if (name.trim().isEmpty() || category == null || size.trim().isEmpty()) {
-                Alert alert = new Alert(Alert.AlertType.WARNING);
-                alert.setTitle("Validation Error");
-                alert.setHeaderText("Missing Required Fields");
-                alert.setContentText("Please fill in all required fields: Name, Category, and Size.");
                 alert.showAndWait();
                 return;
             }
@@ -157,11 +147,6 @@ public class AddproductinterfaceController{
                 alert.setContentText("Could not add Product. Please try again.");
                 alert.showAndWait();
             }
-        } catch (NumberFormatException e) {
-            throw new RuntimeException(e);
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
     }
 
         private void clearForm() {

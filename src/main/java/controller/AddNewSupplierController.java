@@ -133,5 +133,4 @@ public class AddNewSupplierController {
     void btnClearOnAction(ActionEvent event) {
         clearFields();
     }
-
 }
