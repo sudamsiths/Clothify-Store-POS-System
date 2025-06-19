@@ -1,6 +1,5 @@
 package Service.custom.impl;
 
-import DTO.Employee;
 import DTO.Products;
 import Service.custom.ProductService;
 import util.CRUDutil;
@@ -43,22 +42,24 @@ public class ProductServiceimpl implements ProductService {
 
         return result;
     }
-
-    @Override
-    public Products searchProduct(String search) throws SQLException {
-        ResultSet resultSet = CRUDutil.execute("SELECT * FROM products WHERE id = ?", search);
-        if (resultSet.next()) {
-            return new Products(
-                    resultSet.getString("id"),
-                    resultSet.getString("name"),
-                    resultSet.getString("category"),
-                    resultSet.getString("size"),
-                    resultSet.getDouble("price"),
-                    resultSet.getInt("qty")
-            );
+     @Override
+        public Products searchProduct(String search) throws SQLException {
+            ResultSet resultSet = CRUDutil.execute("SELECT * FROM products WHERE id = ?", search);
+            if (resultSet.next()) {
+                // Defensive: use getObject to handle possible NULLs
+                Integer qty = resultSet.getObject("qty") != null ? resultSet.getInt("qty") : 0;
+                Double price = resultSet.getObject("price") != null ? resultSet.getDouble("price") : 0.0;
+                return new Products(
+                        resultSet.getString("id"),
+                        resultSet.getString("name"),
+                        resultSet.getString("category"),
+                        resultSet.getString("size"),
+                        price,
+                        qty
+                );
+            }
+            return null;
         }
-        return null;
-    }
 
 
     @Override
@@ -86,6 +87,17 @@ public class ProductServiceimpl implements ProductService {
     @Override
     public List<Products> deleteProducts(String id) {
         return List.of();
+    }
+
+
+    @Override
+    public List<String> getItemsID() throws SQLException {
+        List<Products>products =getAllProduct();
+        ArrayList<String> ItemsList = new ArrayList<>();
+        products.forEach(item -> {
+            ItemsList.add(item.getId());
+        });
+        return ItemsList;
     }
 
 }

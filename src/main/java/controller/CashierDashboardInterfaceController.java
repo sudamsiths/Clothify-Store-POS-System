@@ -10,15 +10,20 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
 import util.CRUDutil;
 import util.ServiceType;
 
+import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
@@ -80,21 +85,24 @@ public class CashierDashboardInterfaceController {
     RemoveUpdateProductController removeUpdateProductController = new RemoveUpdateProductController();
     ProductService productService = ServiceFactory.getInstance().getServiceType(ServiceType.Product);
 
-
-
     @FXML
     void handleClearSearch(ActionEvent event) {
-
+        txtsearch.clear();
     }
 
     @FXML
-    void handleLogout(ActionEvent event) {
+    void handleLogout(ActionEvent event) throws IOException {
+        Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        currentStage.close();
 
+        Stage loginStage = new Stage();
+        loginStage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/CashierLoginInterface.fxml"))));
+        loginStage.show();
     }
 
     @FXML
-    void handleRefreshProducts(ActionEvent event) {
-
+    void handleRefreshProducts(ActionEvent event) throws SQLException {
+        loadTable();
     }
 
     @FXML
@@ -158,4 +166,9 @@ public class CashierDashboardInterfaceController {
        loadTable();
     }
 
+    public void btnplaceorderOnAction(ActionEvent actionEvent) throws IOException {
+        Stage stage =new Stage();
+        stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/PlaceOrderFromInterface.fxml"))));
+        stage.show();
+    }
 }

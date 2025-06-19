@@ -16,7 +16,6 @@ public class Products {
     private Integer qty;
     private String image_url;
 
-
-    public Products(String id, String name, String category, String size, double price, int qty) {
+    public Products(String id, String name, String category, String size, Double price, Integer qty) {
     }
 }

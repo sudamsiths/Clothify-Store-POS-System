@@ -90,4 +90,14 @@ public class EmployeeServiceimpl implements EmployeeService {
         }
         return null;
     }
+    @Override
+    public List<String> getCustomerIds() throws SQLException {
+        List<Employee>customers = getAll();
+        ArrayList<String> CustomerList = new ArrayList<>();
+        customers.forEach(customer -> {
+            CustomerList.add(customer.getId());
+        });
+
+        return CustomerList;
+    }
 }

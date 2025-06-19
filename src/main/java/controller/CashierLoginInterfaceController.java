@@ -3,6 +3,7 @@ package controller;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.PasswordField;
@@ -31,6 +32,8 @@ public class CashierLoginInterfaceController {
             Stage s1 = new Stage();
             s1.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/CashierDashboardInterface.fxml"))));
             s1.show();
+            Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            currentStage.close();
 
         } else {
             Alert alert = new Alert(Alert.AlertType.ERROR);

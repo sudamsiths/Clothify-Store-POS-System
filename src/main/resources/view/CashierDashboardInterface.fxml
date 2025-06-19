@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXButton?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
@@ -28,7 +29,7 @@
                     </children>
                 </HBox>
                 <HBox alignment="CENTER_RIGHT" layoutX="600.0" layoutY="20.0" spacing="15.0" />
-                  <Label fx:id="lblCashierName" layoutX="962.0" layoutY="30.0" text="Welcome, John Doe" textFill="WHITE">
+                  <Label fx:id="lblCashierName" layoutX="1036.0" layoutY="31.0" text="Welcome" textFill="WHITE">
                       <font>
                           <Font size="16.0" />
                       </font>
@@ -150,6 +151,11 @@
                 <!-- Status Bar -->
                 <HBox alignment="CENTER_LEFT" layoutX="30.0" layoutY="580.0" spacing="20.0" />
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#404a54" height="613.0" layoutX="860.0" layoutY="-11.0" stroke="#404a54" strokeType="INSIDE" width="94.0" />
+            <JFXButton layoutX="672.0" layoutY="535.0" onAction="#btnplaceorderOnAction" prefHeight="41.0" prefWidth="136.0" style="-fx-background-color: green; -fx-background-radius: 10px;" text="Place an Order" textFill="#eeecec">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </JFXButton>
             </children>
         </AnchorPane>
     </center>

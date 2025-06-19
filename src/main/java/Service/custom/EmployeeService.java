@@ -17,4 +17,5 @@ public interface EmployeeService extends SuperService {
     Boolean createAccount(employeeuser employeeuser) throws SQLException;
     Employee search(String id) throws SQLException;
 
+    List<String> getCustomerIds() throws SQLException;
 }

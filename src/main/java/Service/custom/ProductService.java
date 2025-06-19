@@ -15,4 +15,5 @@ public interface ProductService extends SuperService {
     List<Products> getAllProduct() throws SQLException;
     List<Products>deleteProducts(String id);
 
+    List<String> getItemsID() throws SQLException;
 }
