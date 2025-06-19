@@ -42,25 +42,21 @@ public class ProductServiceimpl implements ProductService {
 
         return result;
     }
-     @Override
-        public Products searchProduct(String search) throws SQLException {
-            ResultSet resultSet = CRUDutil.execute("SELECT * FROM products WHERE id = ?", search);
-            if (resultSet.next()) {
-                // Defensive: use getObject to handle possible NULLs
-                Integer qty = resultSet.getObject("qty") != null ? resultSet.getInt("qty") : 0;
-                Double price = resultSet.getObject("price") != null ? resultSet.getDouble("price") : 0.0;
-                return new Products(
-                        resultSet.getString("id"),
-                        resultSet.getString("name"),
-                        resultSet.getString("category"),
-                        resultSet.getString("size"),
-                        price,
-                        qty
-                );
-            }
-            return null;
+    @Override
+    public Products searchProduct(String search) throws SQLException {
+        ResultSet resultSet = CRUDutil.execute("SELECT * FROM products WHERE id = ?", search);
+        if (resultSet.next()) {
+            return new Products(
+                    resultSet.getString("id"),
+                    resultSet.getString("name"),
+                    resultSet.getString("category"),
+                    resultSet.getString("size"),
+                    resultSet.getDouble("price"),
+                    resultSet.getInt("qty")
+            );
         }
-
+        return null;
+    }
 
     @Override
     public List<Products> getAllProduct() throws SQLException {
