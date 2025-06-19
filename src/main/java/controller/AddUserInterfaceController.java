@@ -112,12 +112,6 @@ public class AddUserInterfaceController {
                 alert.showAndWait();
             }
         } catch (SQLException e) {
-            e.printStackTrace(); // For debugging
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Database Error");
-            alert.setHeaderText("SQL Exception Occurred");
-            alert.setContentText("Error: " + e.getMessage());
-            alert.showAndWait();
         }
     }
 
