@@ -1,12 +1,12 @@
 package controller;
 
-import DTO.CartTM;
-import DTO.Employee;
-import DTO.Products;
+import DTO.*;
 import Service.ServiceFactory;
 import Service.custom.EmployeeService;
+import Service.custom.OrderService;
 import Service.custom.ProductService;
 import com.jfoenix.controls.JFXComboBox;
+import db.DBConnection;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -23,6 +23,9 @@ import javafx.util.Duration;
 import util.ServiceType;
 
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.time.LocalTime;
@@ -33,6 +36,7 @@ import java.util.ResourceBundle;
 
 public class PlaceOrderFormController implements Initializable {
 
+    public TextField txtOrderID;
     @FXML
     private JFXComboBox cmdcustomerid;
 
@@ -104,6 +108,7 @@ public class PlaceOrderFormController implements Initializable {
 
     ProductService productService = ServiceFactory.getInstance().getServiceType(ServiceType.Product);
     EmployeeService employeeService = ServiceFactory.getInstance().getServiceType(ServiceType.Employee);
+    OrderService orderService =ServiceFactory.getInstance().getServiceType(ServiceType.Order);
     List<CartTM>cartTMS =new ArrayList<>();
 
 
@@ -111,6 +116,14 @@ public class PlaceOrderFormController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         LoadtDateTime();
+        String nextId = null;
+        try {
+            nextId = generateNextCustomerID();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        txtOrderID.setText(nextId);
+        txtOrderID.setEditable(false);
 
         try {
             GetCustomersID();
@@ -147,6 +160,28 @@ public class PlaceOrderFormController implements Initializable {
             }
         });
     }
+    public String IdIncrement(String id) {
+        if (id != null && id.length() >= 2 && id.startsWith("O")) {
+            String numberPart = id.substring(1);
+            int number = Integer.parseInt(numberPart);
+            return String.format("O%03d", number + 1);
+        }
+        return "O001";
+    }
+
+    private String generateNextCustomerID() throws SQLException {
+        Connection connection = DBConnection.getInstance().getConnection();
+        PreparedStatement stmt = connection.prepareStatement(
+                "SELECT id FROM orders ORDER BY id DESC LIMIT 1"
+        );
+
+        ResultSet rs = stmt.executeQuery();
+        if (rs.next()) {
+            return IdIncrement(rs.getString("id"));
+        } else {
+            return "O001";
+        }
+    }
 
     @FXML
     void btnaddtocart(ActionEvent event) {
@@ -165,8 +200,24 @@ public class PlaceOrderFormController implements Initializable {
 
     @FXML
     void btnplaceorder(ActionEvent event) {
+        String orderId = txtOrderID.getText();
+        String date = lbldate.getText();
+        String customerId = cmdcustomerid.getValue().toString();
+        List<OrderDetails> orderDetails = new ArrayList<>();
 
-
+        cartTMS.forEach(cartTM -> {
+            orderDetails.add(
+                    new OrderDetails(
+                            orderId,
+                            cartTM.getItemCode(),
+                            cartTM.getQtyOnHand(),
+                            cartTM.getUnitPrice()
+                    )
+            );
+        });
+        Order order = new Order(orderId, date, customerId, orderDetails);
+        System.out.println(order);
+        orderService.placeOrder(order);
     }
 
     private void LoadtDateTime(){

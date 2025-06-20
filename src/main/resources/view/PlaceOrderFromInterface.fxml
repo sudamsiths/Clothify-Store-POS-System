@@ -10,7 +10,6 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="700.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.PlaceOrderFormController">
    <children>
       <JFXComboBox fx:id="cmdcustomerid" layoutX="79.0" layoutY="165.0" prefHeight="47.0" prefWidth="247.0" promptText="CustomerID" />
@@ -108,5 +107,15 @@
             <Font size="14.0" />
          </font>
       </TextField>
+      <TextField fx:id="txtOrderID" layoutX="1094.0" layoutY="112.0" prefHeight="30.0" prefWidth="99.0" promptText="Order ID">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </TextField>
+      <Label layoutX="1007.0" layoutY="111.0" prefHeight="32.0" prefWidth="80.0" text="Order ID  : ">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>
