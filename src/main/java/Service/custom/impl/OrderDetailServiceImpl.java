@@ -19,11 +19,11 @@ public class OrderDetailServiceImpl {
     public Boolean addOrderDetails(OrderDetails orderDetails) throws SQLException {
         return CRUDutil.execute("INSERT INTO order_details VALUES (?,?,?,?,?,?)",
                 orderDetails.getId(),
-                orderDetails.getItemCode(),
+                orderDetails.getItem_code(),
                 orderDetails.getCategory(),
                 orderDetails.getSize(),
                 orderDetails.getQty(),
-                orderDetails.getUnitPrice()
+                orderDetails.getUnit_price()
         );
     }
 }

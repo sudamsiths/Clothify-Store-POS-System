@@ -11,6 +11,7 @@ import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -109,7 +110,7 @@ public class PlaceOrderFormController implements Initializable {
     ProductService productService = ServiceFactory.getInstance().getServiceType(ServiceType.Product);
     EmployeeService employeeService = ServiceFactory.getInstance().getServiceType(ServiceType.Employee);
     OrderService orderService =ServiceFactory.getInstance().getServiceType(ServiceType.Order);
-    List<CartTM>cartTMS =new ArrayList<>();
+    private ObservableList<CartTM> cartTMS = FXCollections.observableArrayList();
 
 
 
@@ -185,15 +186,17 @@ public class PlaceOrderFormController implements Initializable {
 
     @FXML
     void btnaddtocart(ActionEvent event) {
-        String itemcode=cmditemcode.getValue().toString();
-        String itemname=txtdescription.getText();
-        Integer qtyonhand= Integer.parseInt(txtqty.getText());
-        Double unitprice=Double.parseDouble(txtunit.getText());
-        String category=txtcategory.getText();
-        String size=txtSize.getText();
-        Double total=qtyonhand*unitprice;
+        String itemcode = cmditemcode.getValue().toString();
+        String itemname = txtdescription.getText();
+        Integer qtyonhand = Integer.parseInt(txtqty.getText());
+        Double unitprice = Double.parseDouble(txtunit.getText());
+        String category = txtcategory.getText();
+        String size = txtSize.getText();
+        Double total = qtyonhand * unitprice;
 
-        cartTMS.add( new CartTM(itemcode,itemname,qtyonhand,unitprice,category,size,total));
+        CartTM cartItem = new CartTM(itemcode, itemname, qtyonhand, unitprice, category, size, total);
+        cartTMS.add(cartItem);
+
         tblitems.setItems(FXCollections.observableArrayList(cartTMS));
         calNetTotal();
     }
@@ -205,16 +208,19 @@ public class PlaceOrderFormController implements Initializable {
         String customerId = cmdcustomerid.getValue().toString();
         List<OrderDetails> orderDetails = new ArrayList<>();
 
-        cartTMS.forEach(cartTM -> {
+        for (CartTM cartTM : cartTMS) {
             orderDetails.add(
                     new OrderDetails(
                             orderId,
                             cartTM.getItemCode(),
+                            cartTM.getCategory(),
+                            cartTM.getSize(),
                             cartTM.getQtyOnHand(),
                             cartTM.getUnitPrice()
                     )
             );
-        });
+        }
+
         Order order = new Order(orderId, date, customerId, orderDetails);
         System.out.println(order);
         orderService.placeOrder(order);
@@ -262,14 +268,13 @@ public class PlaceOrderFormController implements Initializable {
         txtcategory.setText(products.getCategory());
     }
 
-
-    private void calNetTotal(){
+    private void calNetTotal() {
         Double netTotal = 0.0;
-        for (CartTM item : cartTMS ){
-            netTotal+=item.getTotal();
+        for (CartTM item : cartTMS) {
+            if (item != null && item.getTotal() != null) {
+                netTotal += item.getTotal();
+            }
         }
-
-        lbltotal.setText(netTotal.toString());
-
+        lbltotal.setText(String.format("%.2f", netTotal));
     }
 }

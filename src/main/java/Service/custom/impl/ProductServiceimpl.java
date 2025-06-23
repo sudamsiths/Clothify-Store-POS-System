@@ -49,10 +49,12 @@ public class ProductServiceimpl implements ProductService {
         if (resultSet.next()) {
             return new Products(
                     resultSet.getString("id"),
+                    resultSet.getString("supplier_id"),
                     resultSet.getString("name"),
                     resultSet.getString("category"),
                     resultSet.getString("size"),
                     resultSet.getDouble("price"),
+                    resultSet.getString("image_url"),
                     resultSet.getInt("qty")
             );
         }
@@ -108,7 +110,7 @@ public class ProductServiceimpl implements ProductService {
 
     public Boolean updateStock(OrderDetails orderDetails) throws SQLException {
         String sql = "UPDATE products SET qty = qty - ? WHERE id =?";
-        return CRUDutil.execute(sql, orderDetails.getQty(), orderDetails.getItemCode());
+        return CRUDutil.execute(sql, orderDetails.getQty(), orderDetails.getItem_code());
     }
 
 }

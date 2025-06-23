@@ -111,20 +111,24 @@ public class CashierDashboardInterfaceController {
 
         Products foundProduct = productService.searchProduct(search);
 
-        colid.setCellValueFactory(new PropertyValueFactory<>("id"));
-        coltitle.setCellValueFactory(new PropertyValueFactory<>("name"));
-        colcategory.setCellValueFactory(new PropertyValueFactory<>("category"));
-        solsize.setCellValueFactory(new PropertyValueFactory<>("size"));
-        colprice.setCellValueFactory(new PropertyValueFactory<>("price"));
-        colqty.setCellValueFactory(new PropertyValueFactory<>("qty"));
-
         ObservableList<Products> products = FXCollections.observableArrayList();
 
         if (foundProduct != null) {
             products.add(foundProduct);
             removeUpdateProductController.showAlert("Product Found Successfully");
+            colid.setCellValueFactory(new PropertyValueFactory<>("id"));
+            coltitle.setCellValueFactory(new PropertyValueFactory<>("name"));
+            colcategory.setCellValueFactory(new PropertyValueFactory<>("category"));
+            solsize.setCellValueFactory(new PropertyValueFactory<>("size"));
+            colprice.setCellValueFactory(new PropertyValueFactory<>("price"));
+            colqty.setCellValueFactory(new PropertyValueFactory<>("qty"));
+
+            tblProducts.setItems(products);
         }
-        tblProducts.setItems(products);
+        else {
+            removeUpdateProductController.showAlert(search+" Product Not Found ");
+        }
+
     }
 
 

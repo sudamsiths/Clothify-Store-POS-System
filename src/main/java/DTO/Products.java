@@ -13,8 +13,8 @@ public class Products {
     private String category;
     private String size;
     private Double price;
-    private Integer qty;
     private String image_url;
+    private Integer qty;
 
     public Products(String id, String name, String category, String size, Double price, Integer qty) {
     }

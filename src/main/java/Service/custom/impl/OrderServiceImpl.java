@@ -18,17 +18,17 @@ public class OrderServiceImpl implements OrderService {
             Connection connection = DBConnection.getInstance().getConnection();
             connection.setAutoCommit(false);
             PreparedStatement psTm = connection.prepareStatement(sql);
-            psTm.setObject(1,order.getId());
-            psTm.setObject(2,order.getDate());
-            psTm.setObject(3,order.getCustomer_id());
-            Boolean isOrderAdd = psTm.executeUpdate()>0;
-            if (isOrderAdd){
+            psTm.setObject(1, order.getId());
+            psTm.setObject(2, order.getDate());
+            psTm.setObject(3, order.getCustomer_id());
+            Boolean isOrderAdd = psTm.executeUpdate() > 0;
+            if (isOrderAdd) {
                 Boolean isOrderDetailAdd = new OrderDetailServiceImpl().addOrderDetails(order.getOrderDetails());
-                if (isOrderDetailAdd){
+                if (isOrderDetailAdd) {
                     Boolean isUpdateStock = new ProductServiceimpl().updateStock(order.getOrderDetails());
-                    if (isUpdateStock){
+                    if (isUpdateStock) {
                         connection.commit();
-                        new Alert(Alert.AlertType.INFORMATION,"Order Placed!!").show();
+                        new Alert(Alert.AlertType.INFORMATION, "Order Placed!!").show();
                     }
                 }
             }

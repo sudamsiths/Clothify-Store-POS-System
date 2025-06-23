@@ -128,7 +128,7 @@ public class AddproductinterfaceController{
                 return;
             }
 
-            Products products = new Products(nextId, supplierid, name, category, size, price, qty, image);
+            Products products = new Products(nextId, supplierid, name, category, size, price, image, qty);
             boolean b = productService.addProduct(products);
 
             if (b) {
