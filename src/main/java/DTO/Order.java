@@ -17,5 +17,9 @@ public class Order {
 
     public Order(String orderId, String date, String customerId, List<OrderDetails> orderDetails) {
     }
+
+    public Order(String date, String customerId, List<OrderDetails> orderDetails) {
+    }
+
 }
 

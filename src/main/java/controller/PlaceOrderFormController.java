@@ -221,8 +221,10 @@ public class PlaceOrderFormController implements Initializable {
             );
         }
 
-        Order order = new Order(orderId, date, customerId, orderDetails);
-        System.out.println(order);
+        Order order = new Order(orderId,date, customerId, orderDetails);
+        System.out.println("Order ID: " + orderId);
+        System.out.println("Date: " + date);
+        System.out.println("Customer ID: " + customerId);
         orderService.placeOrder(order);
     }
 

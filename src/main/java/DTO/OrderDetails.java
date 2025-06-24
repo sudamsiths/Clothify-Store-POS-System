@@ -18,4 +18,7 @@ public class    OrderDetails {
 
     public OrderDetails(String orderId, String itemCode, Integer qtyOnHand, Double unitPrice) {
     }
+
+    public OrderDetails(String itemCode, String category, String size, Integer qtyOnHand, Double unitPrice) {
+    }
 }
