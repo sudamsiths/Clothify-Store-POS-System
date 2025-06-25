@@ -1,7 +1,14 @@
 package repository;
 
+import Service.custom.impl.EmployeeServiceimpl;
+import Service.custom.impl.OrderServiceImpl;
+import Service.custom.impl.ProductServiceimpl;
+import Service.custom.impl.SupplierServiceimpl;
 import repository.custom.EmployeeRepository;
 import repository.custom.impl.EmployeeRepositoryimpl;
+import repository.custom.impl.OrderRepositoryimpl;
+import repository.custom.impl.ProductRepositoryimpl;
+import repository.custom.impl.SupplierRepositoryimpl;
 import util.RepositoryType;
 
 public class DAOFactory {
@@ -19,6 +26,12 @@ public class DAOFactory {
                 return (T) new EmployeeRepositoryimpl();
             case employeeuser:
                 return (T) new EmployeeRepositoryimpl();
+            case Product:
+                return (T)new ProductRepositoryimpl();
+            case Supplier:
+                return (T)new SupplierRepositoryimpl();
+            case Order:
+                return (T)new OrderRepositoryimpl();
             default:
                 return null;
         }
