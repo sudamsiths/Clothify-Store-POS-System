@@ -10,10 +10,13 @@ import lombok.ToString;
 @NoArgsConstructor
 @ToString
 public class SupplierEntity {
-    private String id;
-    private String name;
+    private String supplier_id;
+    private String supplier_name;
     private String company_name;
     private String email;
     private String item;
+
+    public SupplierEntity(String supplierId, String supplierName, String companyName, String email, String item, Object o) {
+    }
 
 }

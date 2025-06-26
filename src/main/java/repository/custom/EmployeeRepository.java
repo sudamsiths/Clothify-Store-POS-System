@@ -10,4 +10,5 @@ import java.util.List;
 
 public interface EmployeeRepository extends CRUDRepository <EmployeeEntity,String>{
 
+    Boolean adduser(employeeuser employee);
 }

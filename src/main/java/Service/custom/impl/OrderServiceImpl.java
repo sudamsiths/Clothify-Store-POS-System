@@ -12,12 +12,11 @@ import java.sql.SQLException;
 public class OrderServiceImpl implements OrderService {
 
     @Override
-    public Boolean placeOrder(Order order) {
+    public Boolean placeOrder(Order order) throws SQLException {
         String sql = "INSERT INTO orders VALUES(?,?,?)";
-        try {
-            Connection connection = DBConnection.getInstance().getConnection();
+         Connection connection = DBConnection.getInstance().getConnection();
+             PreparedStatement psTm = connection.prepareStatement(sql);
             connection.setAutoCommit(false);
-            PreparedStatement psTm = connection.prepareStatement(sql);
             psTm.setObject(1, order.getId());
             psTm.setObject(2, order.getDate());
             psTm.setObject(3, order.getCustomer_id());
@@ -28,14 +27,11 @@ public class OrderServiceImpl implements OrderService {
                     Boolean isUpdateStock = new ProductServiceimpl().updateStock(order.getOrderDetails());
                     if (isUpdateStock) {
                         connection.commit();
-                        new Alert(Alert.AlertType.INFORMATION, "Order Placed!!").show();
+                        return true;
                     }
                 }
             }
             connection.rollback();
             return false;
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
     }
 }

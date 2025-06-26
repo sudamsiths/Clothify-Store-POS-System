@@ -202,7 +202,7 @@ public class PlaceOrderFormController implements Initializable {
     }
 
     @FXML
-    void btnplaceorder(ActionEvent event) {
+    void btnplaceorder(ActionEvent event) throws SQLException {
         String orderId = txtOrderID.getText();
         String date = lbldate.getText();
         String customerId = cmdcustomerid.getValue().toString();
@@ -221,7 +221,7 @@ public class PlaceOrderFormController implements Initializable {
             );
         }
 
-        Order order = new Order(orderId,date, customerId, orderDetails);
+        Order order = new Order(date, customerId, orderDetails);
         System.out.println("Order ID: " + orderId);
         System.out.println("Date: " + date);
         System.out.println("Customer ID: " + customerId);

@@ -2,8 +2,13 @@ package Service.custom.impl;
 
 import DTO.OrderDetails;
 import DTO.Products;
+import Entity.ProductEntity;
 import Service.custom.ProductService;
+import org.modelmapper.ModelMapper;
+import repository.DAOFactory;
+import repository.custom.ProductRepository;
 import util.CRUDutil;
+import util.RepositoryType;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -12,19 +17,12 @@ import java.util.List;
 
 public class ProductServiceimpl implements ProductService {
 
+    ProductRepository productRepository = DAOFactory.getInstance().getRepositoryType(RepositoryType.Product);
+
     @Override
     public boolean addProduct(Products products) throws SQLException {
-        return CRUDutil.execute(
-                "INSERT INTO products (id, supplier_id, name, category, size, price, qty, image_url) VALUES (?,?,?,?,?,?,?,?)",
-                products.getId(),
-                products.getSupplier_id(),
-                products.getName(),
-                products.getCategory(),
-                products.getSize(),
-                products.getPrice(),
-                products.getQty(),
-                products.getImage_url()
-        );
+        ProductEntity entity =new ModelMapper().map(products, ProductEntity.class);
+        return productRepository.add(entity);
     }
 
     @Override

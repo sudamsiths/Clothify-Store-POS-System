@@ -1,9 +1,15 @@
 package Service.custom.impl;
 
+import Entity.EmployeeEntity;
+import Entity.employeeuserEntity;
 import Service.custom.EmployeeService;
 import DTO.Employee;
 import DTO.employeeuser;
+import org.modelmapper.ModelMapper;
+import repository.DAOFactory;
+import repository.custom.EmployeeRepository;
 import util.CRUDutil;
+import util.RepositoryType;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -12,18 +18,12 @@ import java.util.List;
 
 public class EmployeeServiceimpl implements EmployeeService {
 
+    EmployeeRepository employeeRepository = DAOFactory.getInstance().getRepositoryType(RepositoryType.Employee);
 
     @Override
     public Boolean addEmployee(Employee employee) throws SQLException {
-
-        return CRUDutil.execute("INSERT INTO customer VALUES (?,?,?,?,?,?)",
-                employee.getId(),
-                employee.getName(),
-                employee.getNic(),
-                employee.getAddress(),
-                employee.getDOB(),
-                employee.getContactno()
-        );
+        EmployeeEntity entity =new ModelMapper().map(employee, EmployeeEntity.class);
+        return employeeRepository.add(entity);
     }
 
     @Override
@@ -71,8 +71,8 @@ public class EmployeeServiceimpl implements EmployeeService {
 
     @Override
     public Boolean createAccount(employeeuser employeeuser) throws SQLException {
-        return CRUDutil.execute("insert into user values (?,?)",
-        employeeuser.getEmail(),employeeuser.getPassword());
+        employeeuser employee =new ModelMapper().map(employeeuser, employeeuser.class);
+        return employeeRepository.adduser(employee);
     }
 
     @Override

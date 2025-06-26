@@ -32,6 +32,13 @@ public class CreateUserAccountController {
             alert.setHeaderText("Invalid Input");
             alert.setContentText("Please enter both email and password.");
             alert.showAndWait();
+        return;}
+        if (email.isEmpty() || password.isEmpty()) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("Invalid Input");
+            alert.setContentText("Email and password cannot be empty.");
+            alert.showAndWait();
             return;
         }
         employeeuser employeeuser =new employeeuser(email , password);

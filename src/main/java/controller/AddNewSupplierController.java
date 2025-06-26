@@ -96,8 +96,6 @@ public class AddNewSupplierController {
 
             Supplier supplier =new Supplier(id,name,companyname,email,item);
             Boolean b = supplierService.addSupplier(supplier);
-
-
             if (b) {
                 showAlert1("Supplier Added", "Supplier added successfully with ID: " + txtid.getText());
                 clearFields();

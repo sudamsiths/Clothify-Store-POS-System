@@ -2,8 +2,13 @@ package Service.custom.impl;
 
 import DTO.Employee;
 import DTO.Supplier;
+import Entity.SupplierEntity;
 import Service.custom.SupplierService;
+import org.modelmapper.ModelMapper;
+import repository.DAOFactory;
+import repository.custom.SupplierRepository;
 import util.CRUDutil;
+import util.RepositoryType;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -11,6 +16,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SupplierServiceimpl implements SupplierService {
+
+    SupplierRepository supplierRepository= DAOFactory.getInstance().getRepositoryType(RepositoryType.Supplier);
 
     @Override
     public List<String> getCustomerIds() throws SQLException {
@@ -24,8 +31,8 @@ public class SupplierServiceimpl implements SupplierService {
 
     @Override
     public Boolean addSupplier(Supplier supplier) throws SQLException {
-        return CRUDutil.execute("INSERT INTO suppliers (supplier_id, supplier_name, company_name, email, item) VALUES (?,?,?,?,?)",
-                supplier.getSupplier_id(), supplier.getSupplier_name(), supplier.getCompany_name(), supplier.getEmail(), supplier.getItem());
+        SupplierEntity supplier1 =new ModelMapper().map(supplier ,SupplierEntity.class);
+        return supplierRepository.add(supplier1);
     }
 
     @Override
