@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="700.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ReportFormController">
+   <children>
+      <ImageView fitHeight="563.0" fitWidth="611.0" layoutX="56.0" layoutY="105.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../img/9.jpg" />
+         </image>
+      </ImageView>
+      <JFXButton layoutX="810.0" layoutY="219.0" onAction="#GenarateemployeeReportOnAction" prefHeight="55.0" prefWidth="270.0" style="-fx-background-color: green; -fx-border-radius: 50px;" text="Employee Report" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="22.0" />
+         </font>
+      </JFXButton>
+      <JFXButton layoutX="810.0" layoutY="309.0" onAction="#GenaratesalesReportOnAction" prefHeight="55.0" prefWidth="270.0" style="-fx-background-color: green; -fx-border-radius: 50px;" text="Sales Report" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="22.0" />
+         </font>
+      </JFXButton>
+      <JFXButton layoutX="810.0" layoutY="410.0" onAction="#GenarateproductReportOnAction" prefHeight="55.0" prefWidth="270.0" style="-fx-background-color: green; -fx-border-radius: 50px;" text="Product Report" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="22.0" />
+         </font>
+      </JFXButton>
+      <JFXButton layoutX="810.0" layoutY="500.0" onAction="#GenaratesupplierReportOnAction" prefHeight="55.0" prefWidth="270.0" style="-fx-background-color: green; -fx-border-radius: 50px;" text="Suppliers Report" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="22.0" />
+         </font>
+      </JFXButton>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#404a54" height="104.0" stroke="#404a54" strokeType="INSIDE" width="1200.0" />
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="203.0" layoutY="7.0" prefHeight="91.0" prefWidth="844.0" text="Report Genarate" textFill="WHITE">
+         <font>
+            <Font name="Book Antiqua Bold" size="51.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

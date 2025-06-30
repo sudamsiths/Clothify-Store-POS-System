@@ -11,11 +11,6 @@ import java.io.IOException;
 public class adminServiceController {
 
     @FXML
-    void GenarateSalesReportOnAction(ActionEvent event) {
-
-    }
-
-    @FXML
     void RegisternewUserOnAction(ActionEvent event) throws IOException {
         Stage s1 = new Stage();
         s1.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/AddUserInterface.fxml"))));
@@ -38,4 +33,9 @@ public class adminServiceController {
 
     }
 
+    public void GenarateReportOnAction(ActionEvent actionEvent) throws IOException {
+        Stage s1 = new Stage();
+        s1.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/ReportFormInterface.fxml"))));
+        s1.show();
+    }
 }

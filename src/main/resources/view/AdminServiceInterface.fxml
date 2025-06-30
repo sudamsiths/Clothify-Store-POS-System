@@ -8,7 +8,6 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="700.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.adminServiceController">
    <children>
       <ImageView fitHeight="548.0" fitWidth="844.0" layoutX="378.0" layoutY="131.0" pickOnBounds="true" preserveRatio="true">
@@ -31,7 +30,7 @@
             <Font name="System Bold" size="22.0" />
          </font>
       </JFXButton>
-      <JFXButton layoutX="82.0" layoutY="420.0" onAction="#GenarateSalesReportOnAction" prefHeight="55.0" prefWidth="270.0" style="-fx-background-color: yellow; -fx-border-radius: 50px;" text="Generate Sales Reports">
+      <JFXButton layoutX="82.0" layoutY="420.0" onAction="#GenarateReportOnAction" prefHeight="55.0" prefWidth="270.0" style="-fx-background-color: yellow; -fx-border-radius: 50px;" text="Generate Reports">
          <font>
             <Font name="System Bold" size="22.0" />
          </font>

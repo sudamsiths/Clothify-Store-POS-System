@@ -12,7 +12,7 @@ import java.util.List;
 public class Order {
     private String id;
     private Date date;
-    private String customer_id;
+    private String customerId;
     private List<OrderDetails> orderDetails;
 
     public Order(String orderId, String date, String customerId, List<OrderDetails> orderDetails) {

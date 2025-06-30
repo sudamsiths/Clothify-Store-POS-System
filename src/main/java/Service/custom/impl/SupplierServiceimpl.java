@@ -48,7 +48,6 @@ public class SupplierServiceimpl implements SupplierService {
             while (resultSet.next()) {
                 Supplier supplier = new Supplier();
                 supplier.setSupplier_id(resultSet.getString("supplier_id"));
-                // Fixed: Use correct field name
                 supplier.setSupplier_name(resultSet.getString("supplier_name"));
                 supplier.setCompany_name(resultSet.getString("company_name"));
                 supplier.setEmail(resultSet.getString("email"));

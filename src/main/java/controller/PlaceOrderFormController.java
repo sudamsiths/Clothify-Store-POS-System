@@ -15,10 +15,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.util.Duration;
 import util.ServiceType;
@@ -220,12 +217,8 @@ public class PlaceOrderFormController implements Initializable {
                     )
             );
         }
-
-        Order order = new Order(date, customerId, orderDetails);
-        System.out.println("Order ID: " + orderId);
-        System.out.println("Date: " + date);
-        System.out.println("Customer ID: " + customerId);
-        System.out.println("Order Details: " + orderDetails);
+        Order order = new Order(orderId, date, customerId, orderDetails);
+        System.out.println(order);
         orderService.placeOrder(order);
     }
 
