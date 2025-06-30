@@ -22,8 +22,12 @@ public class ReportFormController {
     }
 
     @FXML
-    void GenarateproductReportOnAction(ActionEvent event) {
-
+    void GenarateproductReportOnAction(ActionEvent event) throws JRException, SQLException {
+        JasperDesign load = JRXmlLoader.load("src/main/resources/report/ProductReports.jrxml");
+        JasperReport jasperReport = JasperCompileManager.compileReport(load);
+        JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, null, DBConnection.getInstance().getConnection());
+        JasperExportManager.exportReportToPdfFile(jasperPrint, "ProductReports.pdf");
+        JasperViewer.viewReport(jasperPrint, false);
     }
 
     @FXML
@@ -32,8 +36,12 @@ public class ReportFormController {
     }
 
     @FXML
-    void GenaratesupplierReportOnAction(ActionEvent event) {
-
+    void GenaratesupplierReportOnAction(ActionEvent event) throws JRException, SQLException {
+        JasperDesign load = JRXmlLoader.load("src/main/resources/report/SupplierReportss.jrxml");
+        JasperReport jasperReport = JasperCompileManager.compileReport(load);
+        JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, null, DBConnection.getInstance().getConnection());
+        JasperExportManager.exportReportToPdfFile(jasperPrint, "SupplierReportss.pdf");
+        JasperViewer.viewReport(jasperPrint, false);
     }
 
 }

@@ -171,8 +171,10 @@ public class CashierDashboardInterfaceController {
     }
 
     public void btnplaceorderOnAction(ActionEvent actionEvent) throws IOException {
-        Stage stage =new Stage();
-        stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/PlaceOrderFromInterface.fxml"))));
-        stage.show();
+            Stage currentStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/PlaceOrderFromInterface.fxml"))));
+            stage.show();
+            currentStage.close();
     }
 }
