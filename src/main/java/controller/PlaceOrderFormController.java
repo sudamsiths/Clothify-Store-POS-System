@@ -225,6 +225,7 @@ public class PlaceOrderFormController implements Initializable {
         System.out.println("Order ID: " + orderId);
         System.out.println("Date: " + date);
         System.out.println("Customer ID: " + customerId);
+        System.out.println("Order Details: " + orderDetails);
         orderService.placeOrder(order);
     }
 
