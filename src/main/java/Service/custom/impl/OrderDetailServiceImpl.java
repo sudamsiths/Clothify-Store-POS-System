@@ -17,13 +17,14 @@ public class OrderDetailServiceImpl {
         return true;
     }
     public Boolean addOrderDetails(OrderDetails orderDetails) throws SQLException {
-        return CRUDutil.execute("INSERT INTO order_details VALUES (?,?,?,?,?,?)",
+        return CRUDutil.execute("INSERT INTO order_details VALUES (?,?,?,?,?,?,?)",
                 orderDetails.getId(),
                 orderDetails.getItem_code(),
                 orderDetails.getCategory(),
                 orderDetails.getSize(),
                 orderDetails.getQty(),
-                orderDetails.getUnit_price()
+                orderDetails.getUnit_price(),
+                orderDetails.getTotal()
         );
     }
 }

@@ -27,59 +27,29 @@ public class ProductServiceimpl implements ProductService {
 
     @Override
     public boolean updateProduct(Products products) throws SQLException {
-        String sql = "UPDATE products SET supplier_id=?, name=?, category=?, size=?, price=?, qty=? WHERE id=?";
-
-        Boolean result = CRUDutil.execute(sql,
-                products.getSupplier_id(),
-                products.getName(),
-                products.getCategory(),
-                products.getSize(),
-                products.getPrice(),
-                products.getQty(),
-                products.getId()
-        );
-
-        return result;
+        ProductEntity entity = new ModelMapper().map(products, ProductEntity.class);
+        return productRepository.update(entity);
     }
     @Override
     public Products searchProduct(String search) throws SQLException {
-        ResultSet resultSet = CRUDutil.execute("SELECT * FROM products WHERE id = ?", search);
-        if (resultSet.next()) {
-            return new Products(
-                    resultSet.getString("id"),
-                    resultSet.getString("supplier_id"),
-                    resultSet.getString("name"),
-                    resultSet.getString("category"),
-                    resultSet.getString("size"),
-                    resultSet.getDouble("price"),
-                    resultSet.getString("image_url"),
-                    resultSet.getInt("qty")
-            );
+        ProductEntity entity = productRepository.searchById(search);
+        if (entity != null) {
+            return new ModelMapper().map(entity, Products.class);
         }
         return null;
     }
 
     @Override
     public List<Products> getAllProduct() throws SQLException {
+        List <ProductEntity> productEntities =  productRepository.getAll();
         List<Products> productsList = new ArrayList<>();
-
-        try (ResultSet resultSet = CRUDutil.execute("select * from products")) {
-            while (resultSet.next()) {
-               Products products = new Products();
-                products.setId(resultSet.getString("id"));
-                products.setSupplier_id(resultSet.getString("supplier_id"));
-                products.setName(resultSet.getString("name"));
-                products.setCategory(resultSet.getString("category"));
-                products.setPrice(resultSet.getDouble("price"));
-                products.setQty(resultSet.getInt("qty"));
-                products.setSize(resultSet.getString("size"));
-
-                productsList.add(products);
-            }
+        for (ProductEntity entity : productEntities) {
+            Products products = new ModelMapper().map(entity, Products.class);
+            productsList.add(products);
         }
-
         return productsList;
     }
+
 
     @Override
     public List<Products> deleteProducts(String id) {

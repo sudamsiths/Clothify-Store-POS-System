@@ -3,24 +3,20 @@ package Entity;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 
-@Data
+@Setter
+@Getter
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
 
-public class ProductEntity {
+public class OrderDetailsEntity {
     private String id;
-    private String supplier_id;
-    private String name;
+    private String item_code;
     private String category;
     private String size;
-    private Double price;
     private Integer qty;
-    private String image_url;
-
+    private Double unit_price;
+    private Double total;
 }

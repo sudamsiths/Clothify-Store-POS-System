@@ -39,7 +39,7 @@ public class EmployeeRepositoryimpl implements EmployeeRepository {
     }
 
     @Override
-    public List<EmployeeEntity> getAll(EmployeeEntity entity) {
+    public List<EmployeeEntity> getAll() throws SQLException {
         return List.of();
     }
 

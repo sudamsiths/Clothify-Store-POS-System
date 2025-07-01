@@ -325,7 +325,8 @@ public class PlaceOrderFormController implements Initializable {
                         cartTM.getCategory(),
                         cartTM.getSize(),
                         cartTM.getQtyOnHand(),
-                        cartTM.getUnitPrice()
+                        cartTM.getUnitPrice(),
+                        cartTM.getTotal()
                 );
                 orderDetails.add(detail);
             }

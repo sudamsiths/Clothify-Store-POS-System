@@ -4,12 +4,18 @@ import DTO.Order;
 import Service.custom.OrderService;
 import db.DBConnection;
 import javafx.scene.control.Alert;
+import repository.DAOFactory;
+import repository.custom.OrderRepository;
+import repository.custom.ProductRepository;
+import util.RepositoryType;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 public class OrderServiceImpl implements OrderService {
+
+    OrderRepository orderRepository = DAOFactory.getInstance().getRepositoryType(RepositoryType.Order);
 
     @Override
     public Boolean placeOrder(Order order) throws SQLException {

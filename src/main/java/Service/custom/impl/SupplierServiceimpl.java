@@ -42,21 +42,13 @@ public class SupplierServiceimpl implements SupplierService {
 
     @Override
     public List<Supplier> getAllSuppliers() throws SQLException {
-        List<Supplier> supplierList = new ArrayList<>();
-
-        try (ResultSet resultSet = CRUDutil.execute("select * from suppliers")) {
-            while (resultSet.next()) {
-                Supplier supplier = new Supplier();
-                supplier.setSupplier_id(resultSet.getString("supplier_id"));
-                supplier.setSupplier_name(resultSet.getString("supplier_name"));
-                supplier.setCompany_name(resultSet.getString("company_name"));
-                supplier.setEmail(resultSet.getString("email"));
-                supplier.setItem(resultSet.getString("item"));
-
-                supplierList.add(supplier);
-            }
+        List<SupplierEntity> all = supplierRepository.getAll();
+        List<Supplier> suppliers = new ArrayList<>();
+        for (SupplierEntity supplierEntity : all) {
+            Supplier supplier = new ModelMapper().map(supplierEntity, Supplier.class);
+            suppliers.add(supplier);
         }
-        return supplierList;
+        return suppliers;
     }
 
     @Override
@@ -66,15 +58,9 @@ public class SupplierServiceimpl implements SupplierService {
 
     @Override
     public Supplier searchById(String supplierId) throws SQLException {
-        ResultSet resultSet = CRUDutil.execute("SELECT * FROM suppliers WHERE supplier_id =?", supplierId);
-        if (resultSet.next()) {
-            return new Supplier(
-                    resultSet.getString("supplier_id"),
-                    resultSet.getString("supplier_name"),
-                    resultSet.getString("company_name"),
-                    resultSet.getString("email"),
-                    resultSet.getString("item")
-            );
+        SupplierEntity supplierEntity = supplierRepository.searchById(supplierId);
+        if (supplierEntity != null) {
+            return new ModelMapper().map(supplierEntity, Supplier.class);
         }
         return null;
     }
