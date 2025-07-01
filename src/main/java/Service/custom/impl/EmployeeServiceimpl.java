@@ -1,7 +1,5 @@
 package Service.custom.impl;
-
 import Entity.EmployeeEntity;
-import Entity.employeeuserEntity;
 import Service.custom.EmployeeService;
 import DTO.Employee;
 import DTO.employeeuser;
@@ -10,7 +8,6 @@ import repository.DAOFactory;
 import repository.custom.EmployeeRepository;
 import util.CRUDutil;
 import util.RepositoryType;
-
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -33,14 +30,14 @@ public class EmployeeServiceimpl implements EmployeeService {
 
     @Override
     public employeeuser searchById(String email) throws SQLException {
-        ResultSet resultSet = CRUDutil.execute("SELECT * FROM user WHERE email=?", email);
+        ResultSet resultSet = CRUDutil.execute("select * from user where email=?", email);
         if (resultSet.next()) {
             return new employeeuser(
                     resultSet.getString("email"),
-                    resultSet.getString("password")
-            );
+                    resultSet.getString("password"));
+        } else {
+            return null;
         }
-        return null;
     }
 
     @Override
