@@ -1,92 +1,95 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+
 <?import com.jfoenix.controls.JFXButton?>
-<?import javafx.scene.control.DatePicker?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.*?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Rectangle?>
-<?import javafx.scene.text.Font?>
-
-
-<AnchorPane prefHeight="700.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.updateemployeedetailsController">
-   <children>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#404a54" height="104.0" layoutY="-1.0" stroke="#404a54" strokeType="INSIDE" width="1200.0" />
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="203.0" layoutY="6.0" prefHeight="91.0" prefWidth="844.0" text="Employee Service List" textFill="WHITE">
-         <font>
-            <Font name="Book Antiqua Bold" size="51.0" />
-         </font>
-      </Label>
-      <Label layoutX="122.0" layoutY="299.0" prefHeight="37.0" prefWidth="90.0" text="ID          : ">
-         <font>
-            <Font name="Anton Regular" size="23.0" />
-         </font>
-      </Label>
-      <TextField fx:id="txtid" layoutX="237.0" layoutY="299.0" prefHeight="37.0" prefWidth="223.0">
-         <font>
-            <Font name="Arial Rounded MT Bold" size="17.0" />
-         </font>
-      </TextField>
-      <Label layoutX="84.0" layoutY="391.0" prefHeight="37.0" prefWidth="118.0" text="Name          : ">
-         <font>
-            <Font name="Anton Regular" size="23.0" />
-         </font>
-      </Label>
-      <TextField fx:id="txtname" layoutX="237.0" layoutY="391.0" prefHeight="37.0" prefWidth="223.0">
-         <font>
-            <Font name="Arial Rounded MT Bold" size="17.0" />
-         </font>
-      </TextField>
-      <Label layoutX="698.0" layoutY="298.0" prefHeight="37.0" prefWidth="109.0" text="NIC         : ">
-         <font>
-            <Font name="Anton Regular" size="23.0" />
-         </font>
-      </Label>
-      <TextField fx:id="txtNIC" layoutX="833.0" layoutY="299.0" prefHeight="37.0" prefWidth="223.0">
-         <font>
-            <Font name="Arial Rounded MT Bold" size="17.0" />
-         </font>
-      </TextField>
-      <Label layoutX="72.0" layoutY="465.0" prefHeight="37.0" prefWidth="143.0" text="Address       : ">
-         <font>
-            <Font name="Anton Regular" size="23.0" />
-         </font>
-      </Label>
-      <TextField fx:id="txtaddress" layoutX="238.0" layoutY="465.0" prefHeight="37.0" prefWidth="223.0">
-         <font>
-            <Font name="Arial Rounded MT Bold" size="17.0" />
-         </font>
-      </TextField>
-      <Label layoutX="683.0" layoutY="391.0" prefHeight="37.0" prefWidth="109.0" text="DOB          : ">
-         <font>
-            <Font name="Anton Regular" size="23.0" />
-         </font>
-      </Label>
-      <DatePicker fx:id="txtDOB" layoutX="833.0" layoutY="391.0" prefHeight="37.0" prefWidth="223.0" />
-      <Label layoutX="635.0" layoutY="465.0" prefHeight="37.0" prefWidth="171.0" text="Contact NO       : ">
-         <font>
-            <Font name="Anton Regular" size="23.0" />
-         </font>
-      </Label>
-      <TextField fx:id="txtconatcNO" layoutX="834.0" layoutY="465.0" prefHeight="37.0" prefWidth="223.0">
-         <font>
-            <Font name="Arial Rounded MT Bold" size="17.0" />
-         </font>
-      </TextField>
-      <TextField fx:id="txtsearchID" layoutX="72.0" layoutY="170.0" prefHeight="37.0" prefWidth="223.0" promptText="ID">
-         <font>
-            <Font name="Arial Rounded MT Bold" size="17.0" />
-         </font>
-      </TextField>
-      <JFXButton layoutX="316.0" layoutY="164.0" onAction="#btnSarchOnAction" prefHeight="39.0" prefWidth="90.0" style="-fx-background-color: blue;" text="Search" textFill="WHITE">
-         <font>
-            <Font name="System Bold Italic" size="18.0" />
-         </font>
-      </JFXButton>
-      <JFXButton layoutX="914.0" layoutY="628.0" onAction="#updatebtnOnAction" prefHeight="39.0" prefWidth="90.0" style="-fx-background-color: yellow;" text="Update">
-         <font>
-            <Font name="System Bold Italic" size="18.0" />
-         </font>
-      </JFXButton>
-   </children>
+<?import javafx.scene.text.*?>
+<AnchorPane prefHeight="700.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/23.0.1"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.updateemployeedetailsController">
+    <children>
+        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#404a54" height="104.0" layoutY="-1.0" stroke="#404a54"
+                   strokeType="INSIDE" width="1200.0"/>
+        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="203.0" layoutY="6.0" prefHeight="91.0"
+               prefWidth="844.0" text="Employee Service List" textFill="WHITE">
+            <font>
+                <Font name="Book Antiqua Bold" size="51.0"/>
+            </font>
+        </Label>
+        <Label layoutX="122.0" layoutY="299.0" prefHeight="37.0" prefWidth="90.0" text="ID          : ">
+            <font>
+                <Font name="Anton Regular" size="23.0"/>
+            </font>
+        </Label>
+        <TextField fx:id="txtid" layoutX="237.0" layoutY="299.0" prefHeight="37.0" prefWidth="223.0">
+            <font>
+                <Font name="Arial Rounded MT Bold" size="17.0"/>
+            </font>
+        </TextField>
+        <Label layoutX="84.0" layoutY="391.0" prefHeight="37.0" prefWidth="118.0" text="Name          : ">
+            <font>
+                <Font name="Anton Regular" size="23.0"/>
+            </font>
+        </Label>
+        <TextField fx:id="txtname" layoutX="237.0" layoutY="391.0" prefHeight="37.0" prefWidth="223.0">
+            <font>
+                <Font name="Arial Rounded MT Bold" size="17.0"/>
+            </font>
+        </TextField>
+        <Label layoutX="698.0" layoutY="298.0" prefHeight="37.0" prefWidth="109.0" text="NIC         : ">
+            <font>
+                <Font name="Anton Regular" size="23.0"/>
+            </font>
+        </Label>
+        <TextField fx:id="txtNIC" layoutX="833.0" layoutY="299.0" prefHeight="37.0" prefWidth="223.0">
+            <font>
+                <Font name="Arial Rounded MT Bold" size="17.0"/>
+            </font>
+        </TextField>
+        <Label layoutX="72.0" layoutY="465.0" prefHeight="37.0" prefWidth="143.0" text="Address       : ">
+            <font>
+                <Font name="Anton Regular" size="23.0"/>
+            </font>
+        </Label>
+        <TextField fx:id="txtaddress" layoutX="238.0" layoutY="465.0" prefHeight="37.0" prefWidth="223.0">
+            <font>
+                <Font name="Arial Rounded MT Bold" size="17.0"/>
+            </font>
+        </TextField>
+        <Label layoutX="683.0" layoutY="391.0" prefHeight="37.0" prefWidth="109.0" text="DOB          : ">
+            <font>
+                <Font name="Anton Regular" size="23.0"/>
+            </font>
+        </Label>
+        <DatePicker fx:id="txtDOB" layoutX="833.0" layoutY="391.0" prefHeight="37.0" prefWidth="223.0"/>
+        <Label layoutX="635.0" layoutY="465.0" prefHeight="37.0" prefWidth="171.0" text="Contact NO       : ">
+            <font>
+                <Font name="Anton Regular" size="23.0"/>
+            </font>
+        </Label>
+        <TextField fx:id="txtconatcNO" layoutX="834.0" layoutY="465.0" prefHeight="37.0" prefWidth="223.0">
+            <font>
+                <Font name="Arial Rounded MT Bold" size="17.0"/>
+            </font>
+        </TextField>
+        <TextField fx:id="txtsearchID" layoutX="72.0" layoutY="170.0" prefHeight="37.0" prefWidth="223.0"
+                   promptText="ID">
+            <font>
+                <Font name="Arial Rounded MT Bold" size="17.0"/>
+            </font>
+        </TextField>
+        <JFXButton layoutX="316.0" layoutY="164.0" onAction="#btnSarchOnAction" prefHeight="39.0" prefWidth="90.0"
+                   style="-fx-background-color: blue;" text="Search" textFill="WHITE">
+            <font>
+                <Font name="System Bold Italic" size="18.0"/>
+            </font>
+        </JFXButton>
+        <JFXButton layoutX="914.0" layoutY="628.0" onAction="#updatebtnOnAction" prefHeight="39.0" prefWidth="90.0"
+                   style="-fx-background-color: yellow;" text="Update">
+            <font>
+                <Font name="System Bold Italic" size="18.0"/>
+            </font>
+        </JFXButton>
+    </children>
 </AnchorPane>

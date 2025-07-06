@@ -61,9 +61,9 @@ public class UserLoginInterfaceController {
             alert.showAndWait();
             clearField();
 
-                Stage s1 = new Stage();
-                s1.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/ServiceListuser.fxml"))));
-                s1.show();
+            Stage s1 = new Stage();
+            s1.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/ServiceListuser.fxml"))));
+            s1.show();
 
         } else {
             Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -76,19 +76,16 @@ public class UserLoginInterfaceController {
 
     private boolean authenticateUser(String email, String password) throws SQLException {
 
-        try {
-            Connection connection = DBConnection.getInstance().getConnection();
-            PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM user WHERE email = ? AND password = ?");
-            preparedStatement.setString(1, email);
-            preparedStatement.setString(2, password);
+        Connection connection = DBConnection.getInstance().getConnection();
+        PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM user WHERE email = ? AND password = ?");
+        preparedStatement.setString(1, email);
+        preparedStatement.setString(2, password);
 
-            ResultSet resultSet = preparedStatement.executeQuery();
-            return resultSet.next();
-        } finally {
-
-        }
+        ResultSet resultSet = preparedStatement.executeQuery();
+        return resultSet.next();
     }
-    public void clearField(){
+
+    public void clearField() {
         txtloginemail.clear();
         txtloginpassword.clear();
     }

@@ -1,23 +1,20 @@
 package Service.custom.impl;
 
-import DTO.Employee;
 import DTO.Supplier;
 import Entity.SupplierEntity;
 import Service.custom.SupplierService;
 import org.modelmapper.ModelMapper;
 import repository.DAOFactory;
 import repository.custom.SupplierRepository;
-import util.CRUDutil;
 import util.RepositoryType;
 
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
 public class SupplierServiceimpl implements SupplierService {
 
-    SupplierRepository supplierRepository= DAOFactory.getInstance().getRepositoryType(RepositoryType.Supplier);
+    SupplierRepository supplierRepository = DAOFactory.getInstance().getRepositoryType(RepositoryType.Supplier);
 
     @Override
     public List<String> getCustomerIds() throws SQLException {
@@ -31,7 +28,7 @@ public class SupplierServiceimpl implements SupplierService {
 
     @Override
     public Boolean addSupplier(Supplier supplier) throws SQLException {
-        SupplierEntity supplier1 =new ModelMapper().map(supplier ,SupplierEntity.class);
+        SupplierEntity supplier1 = new ModelMapper().map(supplier, SupplierEntity.class);
         return supplierRepository.add(supplier1);
     }
 

@@ -1,11 +1,9 @@
 package config;
 
 import Service.custom.EmployeeService;
-import Service.custom.OrderDetailsService;
 import Service.custom.OrderService;
 import Service.custom.ProductService;
 import Service.custom.impl.EmployeeServiceimpl;
-import Service.custom.impl.OrderDetailServiceImpl;
 import Service.custom.impl.OrderServiceImpl;
 import Service.custom.impl.ProductServiceimpl;
 import com.google.inject.AbstractModule;
@@ -28,9 +26,9 @@ public class Appmodule extends AbstractModule {
         bind(OrderService.class).to(OrderServiceImpl.class);
 
 
-         bind(EmployeeRepository.class).to(EmployeeRepositoryimpl.class);
-         bind(OrderRepository.class).to(OrderRepositoryimpl.class);
-         bind(SupplierRepository.class).to(SupplierRepositoryimpl.class);
-         bind(ProductRepository.class).to(ProductRepositoryimpl.class);
+        bind(EmployeeRepository.class).to(EmployeeRepositoryimpl.class);
+        bind(OrderRepository.class).to(OrderRepositoryimpl.class);
+        bind(SupplierRepository.class).to(SupplierRepositoryimpl.class);
+        bind(ProductRepository.class).to(ProductRepositoryimpl.class);
     }
 }

@@ -8,7 +8,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
-import util.CRUDutil;
 import util.ServiceType;
 
 import java.sql.Connection;
@@ -42,13 +41,15 @@ public class AddNewSupplierController {
     void btnAddOnAction(ActionEvent event) throws SQLException {
         addSuppliers();
     }
+
     @FXML
     public void initialize() throws SQLException {
-            String nextId = generateNextSupplierID();
-            txtid.setText(nextId);
-            txtid.setEditable(false);
+        String nextId = generateNextSupplierID();
+        txtid.setText(nextId);
+        txtid.setEditable(false);
 
     }
+
     public String IdIncrement(String id) {
         if (id != null && id.length() >= 2 && id.startsWith("S")) {
             String numberPart = id.substring(1);
@@ -61,6 +62,7 @@ public class AddNewSupplierController {
         }
         return "S001";
     }
+
     private String generateNextSupplierID() throws SQLException {
         Connection connection = null;
         PreparedStatement stmt = null;
@@ -86,32 +88,35 @@ public class AddNewSupplierController {
             if (stmt != null) stmt.close();
         }
     }
+
     void addSuppliers() throws SQLException {
 
-            String id=txtid.getText();
-            String name=txtname.getText();
-            String companyname=txtcompanyname.getText();
-            String email=txtemail.getText();
-            String item=txtitem.getText();
+        String id = txtid.getText();
+        String name = txtname.getText();
+        String companyname = txtcompanyname.getText();
+        String email = txtemail.getText();
+        String item = txtitem.getText();
 
-            Supplier supplier =new Supplier(id,name,companyname,email,item);
-            Boolean b = supplierService.addSupplier(supplier);
-            if (b) {
-                showAlert1("Supplier Added", "Supplier added successfully with ID: " + txtid.getText());
-                clearFields();
-                String nextId = generateNextSupplierID();
-                txtid.setText(nextId);
-            } else {
-                showAlert("Supplier Added ", "Supplier added Fail");
+        Supplier supplier = new Supplier(id, name, companyname, email, item);
+        Boolean b = supplierService.addSupplier(supplier);
+        if (b) {
+            showAlert1("Supplier Added", "Supplier added successfully with ID: " + txtid.getText());
+            clearFields();
+            String nextId = generateNextSupplierID();
+            txtid.setText(nextId);
+        } else {
+            showAlert("Supplier Added ", "Supplier added Fail");
 
-            }
+        }
     }
+
     private void clearFields() {
         txtname.clear();
         txtcompanyname.clear();
         txtemail.clear();
         txtitem.clear();
     }
+
     private void showAlert(String title, String message) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle(title);
@@ -119,6 +124,7 @@ public class AddNewSupplierController {
         alert.setContentText(message);
         alert.showAndWait();
     }
+
     private void showAlert1(String title, String message) {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle(title);

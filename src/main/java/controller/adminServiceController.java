@@ -20,14 +20,14 @@ public class adminServiceController {
 
     @FXML
     void UpdateEmployeedetailsOnAction(ActionEvent event) throws IOException {
-        Stage s1=new Stage();
+        Stage s1 = new Stage();
         s1.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/updateemployeedetailsInterface.fxml"))));
         s1.show();
     }
 
     @FXML
     void ViewEmployeedetailsOnAction(ActionEvent event) throws IOException {
-        Stage s1=new Stage();
+        Stage s1 = new Stage();
         s1.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/UpdateCustomerdetails.fxml"))));
         s1.show();
 

@@ -35,7 +35,6 @@ public class updateemployeedetailsController {
     private TextField txtsearchID;
 
 
-
     @FXML
     void btnSarchOnAction(ActionEvent event) throws SQLException {
         String searchId = txtsearchID.getText();

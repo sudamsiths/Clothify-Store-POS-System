@@ -1,6 +1,5 @@
 package repository.custom.impl;
 
-import DTO.Products;
 import Entity.ProductEntity;
 import repository.custom.ProductRepository;
 import util.CRUDutil;
@@ -53,15 +52,15 @@ public class ProductRepositoryimpl implements ProductRepository {
         ResultSet resultSet = CRUDutil.execute("SELECT * FROM products WHERE id = ?", s);
         if (resultSet.next()) {
             return new ProductEntity(
-                                resultSet.getString("id"),
-                                resultSet.getString("supplier_id"),
-                                resultSet.getString("name"),
-                                resultSet.getString("category"),
-                                resultSet.getString("size"),
-                                resultSet.getDouble("price"),
+                    resultSet.getString("id"),
+                    resultSet.getString("supplier_id"),
+                    resultSet.getString("name"),
+                    resultSet.getString("category"),
+                    resultSet.getString("size"),
+                    resultSet.getDouble("price"),
                     resultSet.getInt("qty"),
                     resultSet.getString("image_url")
-                        );
+            );
         }
         return null;
     }

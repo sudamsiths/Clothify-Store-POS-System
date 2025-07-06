@@ -1,10 +1,13 @@
 package repository.custom.impl;
 
-import DTO.Supplier;
 import Entity.SupplierEntity;
 import db.DBConnection;
+import org.hibernate.HibernateError;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
 import repository.custom.SupplierRepository;
 import util.CRUDutil;
+import util.HibernateUtil;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -16,21 +19,28 @@ public class SupplierRepositoryimpl implements SupplierRepository {
 
     @Override
     public boolean add(SupplierEntity entity) throws SQLException {
-        String sql = "INSERT INTO suppliers VALUES (?, ?, ?, ?, ?)";
-        try (var connection = DBConnection.getInstance().getConnection();
-             var preparedStatement = connection.prepareStatement(sql)) {
 
-            preparedStatement.setString(1, entity.getSupplier_id());
-            preparedStatement.setString(2, entity.getSupplier_name());
-            preparedStatement.setString(3, entity.getCompany_name());
-            preparedStatement.setString(4, entity.getEmail());
-            preparedStatement.setString(5, entity.getItem());
+        System.out.println(entity);
 
-            return preparedStatement.executeUpdate() > 0;
-        } catch (SQLException e) {
+        Transaction transaction = null;
+
+        try(Session session =HibernateUtil.getSessionFactory().getCurrentSession()) {
+
+            transaction = session.beginTransaction();
+            session.persist(entity);
+
+            transaction.commit();
+
+
+        } catch (HibernateError e) {
+
+            if (transaction != null) {
+                transaction.rollback();
+            }
             e.printStackTrace();
-            throw e;
         }
+
+        return true;
     }
 
     @Override

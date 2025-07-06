@@ -1,5 +1,6 @@
 package controller;
 
+import DTO.Employee;
 import Service.ServiceFactory;
 import Service.custom.EmployeeService;
 import Service.custom.impl.EmployeeServiceimpl;
@@ -9,7 +10,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import DTO.Employee;
 import util.CRUDutil;
 import util.ServiceType;
 
@@ -33,7 +33,7 @@ public class UpdateCustomerDetailsController {
     @FXML
     private TableColumn colnic;
     @FXML
-    private  TableView<Employee> tblview;
+    private TableView<Employee> tblview;
 
     EmployeeService employeeService = ServiceFactory.getInstance().getServiceType(ServiceType.Employee);
 
@@ -57,7 +57,7 @@ public class UpdateCustomerDetailsController {
 
     @FXML
     public void btnDeleteOnAction(ActionEvent actionEvent) throws SQLException {
-        Employee selectedCustomer = (Employee) tblview.getSelectionModel().getSelectedItem();
+        Employee selectedCustomer = tblview.getSelectionModel().getSelectedItem();
         if (selectedCustomer == null) {
             showAlert("Please select an employee to delete");
             return;
@@ -102,6 +102,7 @@ public class UpdateCustomerDetailsController {
 
         loadTable();
     }
+
     private void showAlert(String message) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Information");

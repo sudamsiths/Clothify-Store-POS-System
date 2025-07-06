@@ -10,7 +10,6 @@ import repository.custom.ProductRepository;
 import util.CRUDutil;
 import util.RepositoryType;
 
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -21,7 +20,7 @@ public class ProductServiceimpl implements ProductService {
 
     @Override
     public boolean addProduct(Products products) throws SQLException {
-        ProductEntity entity =new ModelMapper().map(products, ProductEntity.class);
+        ProductEntity entity = new ModelMapper().map(products, ProductEntity.class);
         return productRepository.add(entity);
     }
 
@@ -30,6 +29,7 @@ public class ProductServiceimpl implements ProductService {
         ProductEntity entity = new ModelMapper().map(products, ProductEntity.class);
         return productRepository.update(entity);
     }
+
     @Override
     public Products searchProduct(String search) throws SQLException {
         ProductEntity entity = productRepository.searchById(search);
@@ -41,7 +41,7 @@ public class ProductServiceimpl implements ProductService {
 
     @Override
     public List<Products> getAllProduct() throws SQLException {
-        List <ProductEntity> productEntities =  productRepository.getAll();
+        List<ProductEntity> productEntities = productRepository.getAll();
         List<Products> productsList = new ArrayList<>();
         for (ProductEntity entity : productEntities) {
             Products products = new ModelMapper().map(entity, Products.class);
@@ -59,13 +59,14 @@ public class ProductServiceimpl implements ProductService {
 
     @Override
     public List<String> getItemsID() throws SQLException {
-        List<Products>products =getAllProduct();
+        List<Products> products = getAllProduct();
         ArrayList<String> ItemsList = new ArrayList<>();
         products.forEach(item -> {
             ItemsList.add(item.getId());
         });
         return ItemsList;
     }
+
     public Boolean updateStock(List<OrderDetails> orderDetails) throws SQLException {
         for (OrderDetails details : orderDetails) {
             Boolean isUpdate = updateStock(details);

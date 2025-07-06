@@ -9,7 +9,7 @@ import org.hibernate.annotations.ManyToAny;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class    OrderDetails {
+public class OrderDetails {
     private String id;
     @ManyToAny
     private String item_code;

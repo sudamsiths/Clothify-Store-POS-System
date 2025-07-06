@@ -1,66 +1,84 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.*?>
 <?import javafx.scene.Cursor?>
-<?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.shape.Rectangle?>
-<?import javafx.scene.text.Font?>
-
-<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.StoreDashboardController">
-   <children>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#404a54" height="104.0" stroke="#404a54" strokeType="INSIDE" width="1200.0" />
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="203.0" layoutY="7.0" prefHeight="91.0" prefWidth="844.0" text="Welcome Clothify Store PVT (Ltd)" textFill="WHITE">
-         <font>
-            <Font name="Book Antiqua Bold" size="51.0" />
-         </font>
-      </Label>
-      <ImageView fitHeight="602.0" fitWidth="1052.0" layoutX="109.0" layoutY="104.0" opacity="0.74" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../img/1.jpg" />
-         </image>
-      </ImageView>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#404a54" height="610.0" layoutY="93.0" stroke="#404a54" strokeType="INSIDE" width="111.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#404a54" height="610.0" layoutX="1066.0" layoutY="93.0" stroke="#404a54" strokeType="INSIDE" width="136.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="303.0" layoutX="340.0" layoutY="333.0" opacity="0.67" stroke="WHITE" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeMiterLimit="15.0" strokeType="OUTSIDE" strokeWidth="50.0" style="background-radius: 30px;" styleClass="-fx-background-radius" width="521.0" />
-      <JFXButton alignment="TOP_CENTER" buttonType="RAISED" contentDisplay="CENTER" depthTest="ENABLE" layoutX="329.0" layoutY="373.0" onAction="#loginasuserOnAction" prefHeight="56.0" prefWidth="543.0" ripplerFill="WHITE" style="-fx-background-color: #404a54; -fx-background-radius: 25px;" text="Login as User" textAlignment="CENTER" textFill="WHITE" textOverrun="CLIP">
-         <font>
-            <Font name="Bodoni MT Condensed Bold" size="35.0" />
-         </font>
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-      </JFXButton>
-      <JFXButton alignment="TOP_CENTER" buttonType="RAISED" contentDisplay="CENTER" depthTest="ENABLE" layoutX="329.0" layoutY="503.0" onAction="#loginasadminOnAction" prefHeight="56.0" prefWidth="543.0" ripplerFill="WHITE" style="-fx-background-color: #404a54; -fx-background-radius: 25px;" text="Login as Admin" textAlignment="CENTER" textFill="WHITE" textOverrun="CLIP">
-         <font>
-            <Font name="Bodoni MT Condensed Bold" size="35.0" />
-         </font>
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-      </JFXButton>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fcfcfc" height="50.0" layoutX="413.0" layoutY="174.0" stroke="WHITE" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeMiterLimit="15.0" strokeType="OUTSIDE" strokeWidth="50.0" style="background-radius: 30px;" styleClass="-fx-background-radius" width="351.0" />
-      <Label layoutX="515.0" layoutY="138.0" prefHeight="31.0" prefWidth="173.0" text="Clothify Store">
-         <font>
-            <Font name="System Bold" size="22.0" />
-         </font>
-      </Label>
-      <Label layoutX="508.0" layoutY="200.0" text="+94 123 456 789">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </Label>
-      <Label layoutX="546.0" layoutY="170.0" text="Panadura">
-         <font>
-            <Font name="System Italic" size="20.0" />
-         </font>
-      </Label>
-      <Label layoutX="490.0" layoutY="230.0" text="clothify@sample.com">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </Label>
-   </children>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1200.0"
+            xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="controller.StoreDashboardController">
+    <children>
+        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#404a54" height="104.0" stroke="#404a54" strokeType="INSIDE"
+                   width="1200.0"/>
+        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="203.0" layoutY="7.0" prefHeight="91.0"
+               prefWidth="844.0" text="Welcome Clothify Store PVT (Ltd)" textFill="WHITE">
+            <font>
+                <Font name="Book Antiqua Bold" size="51.0"/>
+            </font>
+        </Label>
+        <ImageView fitHeight="602.0" fitWidth="1052.0" layoutX="109.0" layoutY="104.0" opacity="0.74"
+                   pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../img/1.jpg"/>
+            </image>
+        </ImageView>
+        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#404a54" height="610.0" layoutY="93.0" stroke="#404a54"
+                   strokeType="INSIDE" width="111.0"/>
+        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#404a54" height="610.0" layoutX="1066.0" layoutY="93.0"
+                   stroke="#404a54" strokeType="INSIDE" width="136.0"/>
+        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="303.0" layoutX="340.0" layoutY="333.0"
+                   opacity="0.67" stroke="WHITE" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeMiterLimit="15.0"
+                   strokeType="OUTSIDE" strokeWidth="50.0" style="background-radius: 30px;"
+                   styleClass="-fx-background-radius" width="521.0"/>
+        <JFXButton alignment="TOP_CENTER" buttonType="RAISED" contentDisplay="CENTER" depthTest="ENABLE" layoutX="329.0"
+                   layoutY="373.0" onAction="#loginasuserOnAction" prefHeight="56.0" prefWidth="543.0"
+                   ripplerFill="WHITE" style="-fx-background-color: #404a54; -fx-background-radius: 25px;"
+                   text="Login as User" textAlignment="CENTER" textFill="WHITE" textOverrun="CLIP">
+            <font>
+                <Font name="Bodoni MT Condensed Bold" size="35.0"/>
+            </font>
+            <cursor>
+                <Cursor fx:constant="HAND"/>
+            </cursor>
+        </JFXButton>
+        <JFXButton alignment="TOP_CENTER" buttonType="RAISED" contentDisplay="CENTER" depthTest="ENABLE" layoutX="329.0"
+                   layoutY="503.0" onAction="#loginasadminOnAction" prefHeight="56.0" prefWidth="543.0"
+                   ripplerFill="WHITE" style="-fx-background-color: #404a54; -fx-background-radius: 25px;"
+                   text="Login as Admin" textAlignment="CENTER" textFill="WHITE" textOverrun="CLIP">
+            <font>
+                <Font name="Bodoni MT Condensed Bold" size="35.0"/>
+            </font>
+            <cursor>
+                <Cursor fx:constant="HAND"/>
+            </cursor>
+        </JFXButton>
+        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fcfcfc" height="50.0" layoutX="413.0" layoutY="174.0"
+                   stroke="WHITE" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeMiterLimit="15.0"
+                   strokeType="OUTSIDE" strokeWidth="50.0" style="background-radius: 30px;"
+                   styleClass="-fx-background-radius" width="351.0"/>
+        <Label layoutX="515.0" layoutY="138.0" prefHeight="31.0" prefWidth="173.0" text="Clothify Store">
+            <font>
+                <Font name="System Bold" size="22.0"/>
+            </font>
+        </Label>
+        <Label layoutX="508.0" layoutY="200.0" text="+94 123 456 789">
+            <font>
+                <Font size="20.0"/>
+            </font>
+        </Label>
+        <Label layoutX="546.0" layoutY="170.0" text="Panadura">
+            <font>
+                <Font name="System Italic" size="20.0"/>
+            </font>
+        </Label>
+        <Label layoutX="490.0" layoutY="230.0" text="clothify@sample.com">
+            <font>
+                <Font size="20.0"/>
+            </font>
+        </Label>
+    </children>
 </AnchorPane>

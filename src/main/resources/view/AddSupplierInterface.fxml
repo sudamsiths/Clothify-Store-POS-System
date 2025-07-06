@@ -1,116 +1,121 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextField?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Rectangle?>
-<?import javafx.scene.text.Font?>
-
-<AnchorPane prefHeight="700.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AddNewSupplierController">
-   <children>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#404a54" height="104.0" layoutY="-2.0" stroke="#404a54" strokeType="INSIDE" width="1200.0" />
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="203.0" layoutY="5.0" prefHeight="91.0" prefWidth="844.0" text="Add New Supplier" textFill="WHITE">
-         <font>
-            <Font name="Book Antiqua Bold" size="51.0" />
-         </font>
-      </Label>
-      <Label layoutX="92.0" layoutY="244.0" prefHeight="40.0" prefWidth="118.0" text="Name          : ">
-         <font>
-            <Font name="Anton Regular" size="23.0" />
-         </font>
-         <padding>
-            <Insets bottom="10.0" />
-         </padding>
-      </Label>
-      <TextField fx:id="txtname" layoutX="223.0" layoutY="246.0" prefHeight="40.0" prefWidth="223.0">
-         <font>
-            <Font name="Arial Rounded MT Bold" size="17.0" />
-         </font>
-         <padding>
-            <Insets bottom="10.0" />
-         </padding>
-      </TextField>
-      <Label layoutX="22.0" layoutY="330.0" prefHeight="40.0" prefWidth="210.0" text="Company Name      : ">
-         <font>
-            <Font name="Anton Regular" size="23.0" />
-         </font>
-         <padding>
-            <Insets bottom="10.0" />
-         </padding>
-      </Label>
-      <TextField fx:id="txtcompanyname" layoutX="223.0" layoutY="336.0" prefHeight="40.0" prefWidth="223.0">
-         <font>
-            <Font name="Arial Rounded MT Bold" size="17.0" />
-         </font>
-         <padding>
-            <Insets bottom="10.0" />
-         </padding>
-      </TextField>
-      <Label layoutX="106.0" layoutY="428.0" prefHeight="40.0" prefWidth="103.0" text="email       : ">
-         <font>
-            <Font name="Anton Regular" size="23.0" />
-         </font>
-         <padding>
-            <Insets bottom="10.0" />
-         </padding>
-      </Label>
-      <TextField fx:id="txtemail" layoutX="223.0" layoutY="428.0" prefHeight="40.0" prefWidth="223.0">
-         <font>
-            <Font name="Arial Rounded MT Bold" size="17.0" />
-         </font>
-         <padding>
-            <Insets bottom="10.0" />
-         </padding>
-      </TextField>
-      <JFXButton layoutX="234.0" layoutY="599.0" onAction="#btnClearOnAction" prefHeight="40.0" prefWidth="103.0" style="-fx-background-color: black;" text="Clear" textFill="WHITE">
-         <font>
-            <Font name="Bernard MT Condensed" size="20.0" />
-         </font>
-      </JFXButton>
-      <JFXButton layoutX="27.0" layoutY="599.0" onAction="#ViewSuppliersOnAction" prefHeight="40.0" prefWidth="180.0" style="-fx-background-color: yellow;" text="View Customers">
-         <font>
-            <Font name="Bernard MT Condensed" size="20.0" />
-         </font>
-      </JFXButton>
-      <JFXButton layoutX="366.0" layoutY="599.0" onAction="#btnAddOnAction" prefHeight="40.0" prefWidth="103.0" style="-fx-background-color: green;" text="Add" textFill="WHITE">
-         <font>
-            <Font name="Bernard MT Condensed" size="20.0" />
-         </font>
-      </JFXButton>
-      <Label layoutX="118.0" layoutY="524.0" prefHeight="40.0" prefWidth="103.0" text="Item      : ">
-         <font>
-            <Font name="Anton Regular" size="23.0" />
-         </font>
-         <padding>
-            <Insets bottom="10.0" />
-         </padding>
-      </Label>
-      <TextField fx:id="txtitem" layoutX="223.0" layoutY="524.0" prefHeight="40.0" prefWidth="223.0">
-         <font>
-            <Font name="Arial Rounded MT Bold" size="17.0" />
-         </font>
-         <padding>
-            <Insets bottom="10.0" />
-         </padding>
-      </TextField>
-      <ImageView fitHeight="587.0" fitWidth="771.0" layoutX="569.0" layoutY="104.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../img/8.jpg" />
-         </image>
-      </ImageView>
-      <Label layoutX="127.0" layoutY="171.0" prefHeight="37.0" prefWidth="90.0" text="ID          : ">
-         <font>
-            <Font name="Anton Regular" size="23.0" />
-         </font>
-      </Label>
-      <TextField fx:id="txtid" layoutX="226.0" layoutY="171.0" prefHeight="37.0" prefWidth="223.0">
-         <font>
-            <Font name="Arial Rounded MT Bold" size="17.0" />
-         </font>
-      </TextField>
-   </children>
+<?import javafx.scene.text.*?>
+<AnchorPane prefHeight="700.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/23.0.1"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AddNewSupplierController">
+    <children>
+        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#404a54" height="104.0" layoutY="-2.0" stroke="#404a54"
+                   strokeType="INSIDE" width="1200.0"/>
+        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="203.0" layoutY="5.0" prefHeight="91.0"
+               prefWidth="844.0" text="Add New Supplier" textFill="WHITE">
+            <font>
+                <Font name="Book Antiqua Bold" size="51.0"/>
+            </font>
+        </Label>
+        <Label layoutX="92.0" layoutY="244.0" prefHeight="40.0" prefWidth="118.0" text="Name          : ">
+            <font>
+                <Font name="Anton Regular" size="23.0"/>
+            </font>
+            <padding>
+                <Insets bottom="10.0"/>
+            </padding>
+        </Label>
+        <TextField fx:id="txtname" layoutX="223.0" layoutY="246.0" prefHeight="40.0" prefWidth="223.0">
+            <font>
+                <Font name="Arial Rounded MT Bold" size="17.0"/>
+            </font>
+            <padding>
+                <Insets bottom="10.0"/>
+            </padding>
+        </TextField>
+        <Label layoutX="22.0" layoutY="330.0" prefHeight="40.0" prefWidth="210.0" text="Company Name      : ">
+            <font>
+                <Font name="Anton Regular" size="23.0"/>
+            </font>
+            <padding>
+                <Insets bottom="10.0"/>
+            </padding>
+        </Label>
+        <TextField fx:id="txtcompanyname" layoutX="223.0" layoutY="336.0" prefHeight="40.0" prefWidth="223.0">
+            <font>
+                <Font name="Arial Rounded MT Bold" size="17.0"/>
+            </font>
+            <padding>
+                <Insets bottom="10.0"/>
+            </padding>
+        </TextField>
+        <Label layoutX="106.0" layoutY="428.0" prefHeight="40.0" prefWidth="103.0" text="email       : ">
+            <font>
+                <Font name="Anton Regular" size="23.0"/>
+            </font>
+            <padding>
+                <Insets bottom="10.0"/>
+            </padding>
+        </Label>
+        <TextField fx:id="txtemail" layoutX="223.0" layoutY="428.0" prefHeight="40.0" prefWidth="223.0">
+            <font>
+                <Font name="Arial Rounded MT Bold" size="17.0"/>
+            </font>
+            <padding>
+                <Insets bottom="10.0"/>
+            </padding>
+        </TextField>
+        <JFXButton layoutX="234.0" layoutY="599.0" onAction="#btnClearOnAction" prefHeight="40.0" prefWidth="103.0"
+                   style="-fx-background-color: black;" text="Clear" textFill="WHITE">
+            <font>
+                <Font name="Bernard MT Condensed" size="20.0"/>
+            </font>
+        </JFXButton>
+        <JFXButton layoutX="27.0" layoutY="599.0" onAction="#ViewSuppliersOnAction" prefHeight="40.0" prefWidth="180.0"
+                   style="-fx-background-color: yellow;" text="View Customers">
+            <font>
+                <Font name="Bernard MT Condensed" size="20.0"/>
+            </font>
+        </JFXButton>
+        <JFXButton layoutX="366.0" layoutY="599.0" onAction="#btnAddOnAction" prefHeight="40.0" prefWidth="103.0"
+                   style="-fx-background-color: green;" text="Add" textFill="WHITE">
+            <font>
+                <Font name="Bernard MT Condensed" size="20.0"/>
+            </font>
+        </JFXButton>
+        <Label layoutX="118.0" layoutY="524.0" prefHeight="40.0" prefWidth="103.0" text="Item      : ">
+            <font>
+                <Font name="Anton Regular" size="23.0"/>
+            </font>
+            <padding>
+                <Insets bottom="10.0"/>
+            </padding>
+        </Label>
+        <TextField fx:id="txtitem" layoutX="223.0" layoutY="524.0" prefHeight="40.0" prefWidth="223.0">
+            <font>
+                <Font name="Arial Rounded MT Bold" size="17.0"/>
+            </font>
+            <padding>
+                <Insets bottom="10.0"/>
+            </padding>
+        </TextField>
+        <ImageView fitHeight="587.0" fitWidth="771.0" layoutX="569.0" layoutY="104.0" pickOnBounds="true"
+                   preserveRatio="true">
+            <image>
+                <Image url="@../img/8.jpg"/>
+            </image>
+        </ImageView>
+        <Label layoutX="127.0" layoutY="171.0" prefHeight="37.0" prefWidth="90.0" text="ID          : ">
+            <font>
+                <Font name="Anton Regular" size="23.0"/>
+            </font>
+        </Label>
+        <TextField fx:id="txtid" layoutX="226.0" layoutY="171.0" prefHeight="37.0" prefWidth="223.0">
+            <font>
+                <Font name="Arial Rounded MT Bold" size="17.0"/>
+            </font>
+        </TextField>
+    </children>
 </AnchorPane>

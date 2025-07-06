@@ -6,7 +6,6 @@ import db.DBConnection;
 import javafx.scene.control.Alert;
 import repository.DAOFactory;
 import repository.custom.OrderRepository;
-import repository.custom.ProductRepository;
 import util.RepositoryType;
 
 import java.sql.Connection;
