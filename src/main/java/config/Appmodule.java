@@ -15,6 +15,7 @@ import repository.custom.ProductRepository;
 import repository.custom.SupplierRepository;
 import repository.custom.impl.EmployeeRepositoryimpl;
 import repository.custom.impl.OrderRepositoryimpl;
+import repository.custom.impl.ProductRepositoryimpl;
 import repository.custom.impl.SupplierRepositoryimpl;
 
 public class Appmodule extends AbstractModule {
@@ -24,10 +25,12 @@ public class Appmodule extends AbstractModule {
         bind(EmployeeService.class).to(EmployeeServiceimpl.class);
         bind(ProductService.class).to(ProductServiceimpl.class);
         bind(OrderService.class).to(OrderServiceImpl.class);
-         bind(OrderService.class).to(OrderServiceImpl.class);
+        bind(OrderService.class).to(OrderServiceImpl.class);
+
+
          bind(EmployeeRepository.class).to(EmployeeRepositoryimpl.class);
-//         bind(ProductRepository.class).to(ProductRepository.class);
          bind(OrderRepository.class).to(OrderRepositoryimpl.class);
          bind(SupplierRepository.class).to(SupplierRepositoryimpl.class);
+         bind(ProductRepository.class).to(ProductRepositoryimpl.class);
     }
 }
