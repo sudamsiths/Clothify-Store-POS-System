@@ -7,6 +7,7 @@ import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import util.CRUDutil;
 
@@ -14,9 +15,20 @@ import java.sql.SQLException;
 
 public class restpasswordController {
 
-    public PasswordField txtemail;
-    public PasswordField txtnewpassword;
+    @FXML
+    private JFXButton btnCancel;
 
+    @FXML
+    private JFXButton btnResetPassword;
+
+    @FXML
+    private Label lblUserEmail;
+
+    @FXML
+    private TextField txtemail;
+
+    @FXML
+    private PasswordField txtnewpassword;
 
     @FXML
     void cancelOnAction(ActionEvent event) {
@@ -48,7 +60,6 @@ public class restpasswordController {
             showAlert("Update failed. Email not found.");
         }
     }
-
     private void showAlert(String message) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Information");
