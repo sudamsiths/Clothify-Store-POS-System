@@ -12,8 +12,11 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.*;
-import javafx.scene.image.*;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import util.ServiceType;
@@ -26,7 +29,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
-public class AddproductinterfaceController{
+public class AddproductinterfaceController {
 
     public TextField txtidAdditem;
     public TextField txtitemname;
@@ -42,7 +45,7 @@ public class AddproductinterfaceController{
 
 
     ProductService productService = ServiceFactory.getInstance().getServiceType(ServiceType.Product);
-    SupplierService supplierService =ServiceFactory.getInstance().getServiceType(ServiceType.Supplier);
+    SupplierService supplierService = ServiceFactory.getInstance().getServiceType(ServiceType.Supplier);
 
     private String selectedImagePath;
 
@@ -109,47 +112,47 @@ public class AddproductinterfaceController{
 
     public void btnItemAddOnAction(ActionEvent actionEvent) throws SQLException {
 
-            String nextId = txtidAdditem.getText();
+        String nextId = txtidAdditem.getText();
 
-            String supplierid = (String) cmbSupplierid.getSelectionModel().getSelectedItem();
+        String supplierid = (String) cmbSupplierid.getSelectionModel().getSelectedItem();
 
-            String name = txtitemname.getText();
-            String category = categoryChoiceBox.getValue();
-            String size = txtsizeitems.getText();
-            Double price = Double.parseDouble(txtpriceadditems.getText());
-            Integer qty = Integer.parseInt(txtqtyfield.getText());
-            String image = selectedImagePath != null ? selectedImagePath : "";
+        String name = txtitemname.getText();
+        String category = categoryChoiceBox.getValue();
+        String size = txtsizeitems.getText();
+        Double price = Double.parseDouble(txtpriceadditems.getText());
+        Integer qty = Integer.parseInt(txtqtyfield.getText());
+        String image = selectedImagePath != null ? selectedImagePath : "";
 
-            if (supplierid == null || supplierid.isEmpty()) {
-                Alert alert = new Alert(Alert.AlertType.WARNING);
-                alert.setHeaderText("Please select a supplier");
-                alert.setContentText("You must select a supplier from the dropdown.");
-                alert.showAndWait();
-                return;
-            }
+        if (supplierid == null || supplierid.isEmpty()) {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setHeaderText("Please select a supplier");
+            alert.setContentText("You must select a supplier from the dropdown.");
+            alert.showAndWait();
+            return;
+        }
 
-            Products products = new Products(nextId, supplierid, name, category, size, price, image, qty);
-            boolean b = productService.addProduct(products);
+        Products products = new Products(nextId, supplierid, name, category, size, price, image, qty);
+        boolean b = productService.addProduct(products);
 
-            if (b) {
-                Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("Success");
-                alert.setHeaderText("Product Added Successfully");
-                alert.setContentText("Product ID: " + nextId + "\nSupplier ID: " + supplierid);
-                alert.showAndWait();
+        if (b) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Success");
+            alert.setHeaderText("Product Added Successfully");
+            alert.setContentText("Product ID: " + nextId + "\nSupplier ID: " + supplierid);
+            alert.showAndWait();
 
-                clearForm();
-                initialize();
-            } else {
-                Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setTitle("Error");
-                alert.setHeaderText("Failed to Add Product");
-                alert.setContentText("Could not add Product. Please try again.");
-                alert.showAndWait();
-            }
+            clearForm();
+            initialize();
+        } else {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("Failed to Add Product");
+            alert.setContentText("Could not add Product. Please try again.");
+            alert.showAndWait();
+        }
     }
 
-        private void clearForm() {
+    private void clearForm() {
         txtitemname.clear();
         txtsizeitems.clear();
         txtpriceadditems.clear();
@@ -161,7 +164,7 @@ public class AddproductinterfaceController{
     }
 
     public void btnShowItemsOnAction(ActionEvent actionEvent) throws IOException {
-        Stage s1=new Stage();
+        Stage s1 = new Stage();
         s1.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/ShowProductInterface.fxml"))));
         s1.show();
     }
@@ -170,6 +173,7 @@ public class AddproductinterfaceController{
         List<String> customerIds = supplierService.getCustomerIds();
         cmbSupplierid.setItems(FXCollections.observableArrayList(customerIds));
     }
+
     private void setValuesToSupplierText(String supplierId) {
         try {
             Supplier supplier = supplierService.searchById(supplierId);

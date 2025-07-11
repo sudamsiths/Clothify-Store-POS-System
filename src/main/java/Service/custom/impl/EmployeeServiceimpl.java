@@ -1,13 +1,15 @@
 package Service.custom.impl;
-import Entity.EmployeeEntity;
-import Service.custom.EmployeeService;
+
 import DTO.Employee;
 import DTO.employeeuser;
+import Entity.EmployeeEntity;
+import Service.custom.EmployeeService;
 import org.modelmapper.ModelMapper;
 import repository.DAOFactory;
 import repository.custom.EmployeeRepository;
 import util.CRUDutil;
 import util.RepositoryType;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -19,7 +21,7 @@ public class EmployeeServiceimpl implements EmployeeService {
 
     @Override
     public Boolean addEmployee(Employee employee) throws SQLException {
-        EmployeeEntity entity =new ModelMapper().map(employee, EmployeeEntity.class);
+        EmployeeEntity entity = new ModelMapper().map(employee, EmployeeEntity.class);
         return employeeRepository.add(entity);
     }
 
@@ -68,7 +70,7 @@ public class EmployeeServiceimpl implements EmployeeService {
 
     @Override
     public Boolean createAccount(employeeuser employeeuser) throws SQLException {
-        employeeuser employee =new ModelMapper().map(employeeuser, employeeuser.class);
+        employeeuser employee = new ModelMapper().map(employeeuser, employeeuser.class);
         return employeeRepository.adduser(employee);
     }
 
@@ -87,9 +89,10 @@ public class EmployeeServiceimpl implements EmployeeService {
         }
         return null;
     }
+
     @Override
     public List<String> getCustomerIds() throws SQLException {
-        List<Employee>customers = getAll();
+        List<Employee> customers = getAll();
         ArrayList<String> CustomerList = new ArrayList<>();
         customers.forEach(customer -> {
             CustomerList.add(customer.getId());

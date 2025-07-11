@@ -31,7 +31,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.ResourceBundle;
-import java.util.Optional;
 
 public class PlaceOrderFormController implements Initializable {
 
@@ -108,7 +107,7 @@ public class PlaceOrderFormController implements Initializable {
     ProductService productService = ServiceFactory.getInstance().getServiceType(ServiceType.Product);
     EmployeeService employeeService = ServiceFactory.getInstance().getServiceType(ServiceType.Employee);
     OrderService orderService = ServiceFactory.getInstance().getServiceType(ServiceType.Order);
-    private ObservableList<CartTM> cartTMS = FXCollections.observableArrayList();
+    private final ObservableList<CartTM> cartTMS = FXCollections.observableArrayList();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

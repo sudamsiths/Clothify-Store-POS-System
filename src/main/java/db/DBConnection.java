@@ -20,7 +20,7 @@ public class DBConnection {
 
     public Connection getConnection() throws SQLException {
         if (connection == null || connection.isClosed()) {
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/clothify_store","root","1234");
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/clothify_store", "root", "1234");
         }
         return connection;
     }

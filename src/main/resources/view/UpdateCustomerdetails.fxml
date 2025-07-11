@@ -1,52 +1,54 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.*?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Rectangle?>
-<?import javafx.scene.text.Font?>
-
-<AnchorPane prefHeight="700.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.UpdateCustomerDetailsController">
-   <children>
-      <TableView fx:id="tblview" layoutY="220.0" prefHeight="396.0" prefWidth="1207.0">
-        <columns>
-          <TableColumn fx:id="colid" prefWidth="98.0" text="ID" />
-          <TableColumn fx:id="colname" prefWidth="313.0" text="Name" />
-            <TableColumn fx:id="colnic" prefWidth="181.0" text="NIC" />
-            <TableColumn fx:id="coladdress" prefWidth="247.0" text="Address" />
-            <TableColumn fx:id="coldob" prefWidth="188.0" text="DOB" />
-            <TableColumn fx:id="colcontact" prefWidth="177.0" text="Contact No" />
-        </columns>
-      </TableView>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#404a54" height="104.0" stroke="#404a54" strokeType="INSIDE" width="1207.0" />
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="203.0" layoutY="7.0" prefHeight="91.0" prefWidth="844.0" text="Delete Update search" textFill="WHITE">
-         <font>
-            <Font name="Book Antiqua Bold" size="51.0" />
-         </font>
-      </Label>
-      <JFXButton layoutX="1024.0" layoutY="639.0" onAction="#btnviewallOnAction" prefHeight="47.0" prefWidth="175.0" style="-fx-background-color: yellow;" text="View All Employee">
-         <font>
-            <Font name="Bernard MT Condensed" size="20.0" />
-         </font>
-      </JFXButton>
-      <JFXButton layoutX="845.0" layoutY="639.0" onAction="#btnDeleteOnAction" prefHeight="47.0" prefWidth="141.0" style="-fx-background-color: red;" text="Delete" textFill="WHITE">
-         <font>
-            <Font name="Bernard MT Condensed" size="20.0" />
-         </font>
-      </JFXButton>
-      <TextField fx:id="txtsearch" layoutX="47.0" layoutY="142.0" prefHeight="38.0" prefWidth="190.0" promptText="Search here">
-         <font>
-            <Font size="21.0" />
-         </font>
-      </TextField>
-      <Button layoutX="255.0" layoutY="144.0" mnemonicParsing="false" onAction="#btnsearchOnAction" prefHeight="38.0" prefWidth="97.0" text="Search">
-         <font>
-            <Font name="System Bold" size="17.0" />
-         </font>
-      </Button>
-   </children>
+<?import javafx.scene.text.*?>
+<AnchorPane prefHeight="700.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/23.0.1"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.UpdateCustomerDetailsController">
+    <children>
+        <TableView fx:id="tblview" layoutY="220.0" prefHeight="396.0" prefWidth="1207.0">
+            <columns>
+                <TableColumn fx:id="colid" prefWidth="98.0" text="ID"/>
+                <TableColumn fx:id="colname" prefWidth="313.0" text="Name"/>
+                <TableColumn fx:id="colnic" prefWidth="181.0" text="NIC"/>
+                <TableColumn fx:id="coladdress" prefWidth="247.0" text="Address"/>
+                <TableColumn fx:id="coldob" prefWidth="188.0" text="DOB"/>
+                <TableColumn fx:id="colcontact" prefWidth="177.0" text="Contact No"/>
+            </columns>
+        </TableView>
+        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#404a54" height="104.0" stroke="#404a54" strokeType="INSIDE"
+                   width="1207.0"/>
+        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="203.0" layoutY="7.0" prefHeight="91.0"
+               prefWidth="844.0" text="Delete Update search" textFill="WHITE">
+            <font>
+                <Font name="Book Antiqua Bold" size="51.0"/>
+            </font>
+        </Label>
+        <JFXButton layoutX="1024.0" layoutY="639.0" onAction="#btnviewallOnAction" prefHeight="47.0" prefWidth="175.0"
+                   style="-fx-background-color: yellow;" text="View All Employee">
+            <font>
+                <Font name="Bernard MT Condensed" size="20.0"/>
+            </font>
+        </JFXButton>
+        <JFXButton layoutX="845.0" layoutY="639.0" onAction="#btnDeleteOnAction" prefHeight="47.0" prefWidth="141.0"
+                   style="-fx-background-color: red;" text="Delete" textFill="WHITE">
+            <font>
+                <Font name="Bernard MT Condensed" size="20.0"/>
+            </font>
+        </JFXButton>
+        <TextField fx:id="txtsearch" layoutX="47.0" layoutY="142.0" prefHeight="38.0" prefWidth="190.0"
+                   promptText="Search here">
+            <font>
+                <Font size="21.0"/>
+            </font>
+        </TextField>
+        <Button layoutX="255.0" layoutY="144.0" mnemonicParsing="false" onAction="#btnsearchOnAction" prefHeight="38.0"
+                prefWidth="97.0" text="Search">
+            <font>
+                <Font name="System Bold" size="17.0"/>
+            </font>
+        </Button>
+    </children>
 </AnchorPane>

@@ -1,9 +1,7 @@
 package controller;
 
-import DTO.Employee;
 import DTO.Products;
 import Service.ServiceFactory;
-import Service.custom.EmployeeService;
 import Service.custom.ProductService;
 import Service.custom.impl.ProductServiceimpl;
 import javafx.collections.FXCollections;
@@ -13,18 +11,12 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
-import util.CRUDutil;
 import util.ServiceType;
 
 import java.io.IOException;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -124,9 +116,8 @@ public class CashierDashboardInterfaceController {
             colqty.setCellValueFactory(new PropertyValueFactory<>("qty"));
 
             tblProducts.setItems(products);
-        }
-        else {
-            removeUpdateProductController.showAlert(search+" Product Not Found ");
+        } else {
+            removeUpdateProductController.showAlert(search + " Product Not Found ");
         }
 
     }
@@ -146,6 +137,7 @@ public class CashierDashboardInterfaceController {
     void handleViewProductDetails(ActionEvent event) {
 
     }
+
     @FXML
     public void loadTable() throws SQLException {
         ProductServiceimpl productServiceimpl = new ProductServiceimpl();
@@ -167,14 +159,14 @@ public class CashierDashboardInterfaceController {
 
     @FXML
     void handleViewProducts(ActionEvent event) throws SQLException {
-       loadTable();
+        loadTable();
     }
 
     public void btnplaceorderOnAction(ActionEvent actionEvent) throws IOException {
-            Stage currentStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-            Stage stage = new Stage();
-            stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/PlaceOrderFromInterface.fxml"))));
-            stage.show();
-            currentStage.close();
+        Stage currentStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+        Stage stage = new Stage();
+        stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/PlaceOrderFromInterface.fxml"))));
+        stage.show();
+        currentStage.close();
     }
 }

@@ -10,7 +10,8 @@ public class ServiceFactory {
 
     private static ServiceFactory instance;
 
-    private ServiceFactory(){}
+    private ServiceFactory() {
+    }
 
     public static ServiceFactory getInstance() {
         if (instance == null) {
@@ -19,18 +20,18 @@ public class ServiceFactory {
         return instance;
     }
 
-    public <T extends SuperService> T getServiceType(ServiceType type){
-        switch (type){
+    public <T extends SuperService> T getServiceType(ServiceType type) {
+        switch (type) {
             case Employee:
                 return (T) new EmployeeServiceimpl();
             case employeeuser:
                 return (T) new EmployeeServiceimpl();
             case Product:
-                return (T)new ProductServiceimpl();
+                return (T) new ProductServiceimpl();
             case Supplier:
-                return (T)new SupplierServiceimpl();
+                return (T) new SupplierServiceimpl();
             case Order:
-                return (T)new OrderServiceImpl();
+                return (T) new OrderServiceImpl();
             default:
                 return null;
         }

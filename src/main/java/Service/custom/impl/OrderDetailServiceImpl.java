@@ -8,14 +8,15 @@ import java.util.List;
 
 public class OrderDetailServiceImpl {
     public Boolean addOrderDetails(List<OrderDetails> orderDetails) throws SQLException {
-        for (OrderDetails details : orderDetails){
+        for (OrderDetails details : orderDetails) {
             Boolean isAdd = addOrderDetails(details);
-            if(!isAdd){
+            if (!isAdd) {
                 return false;
             }
         }
         return true;
     }
+
     public Boolean addOrderDetails(OrderDetails orderDetails) throws SQLException {
         return CRUDutil.execute("INSERT INTO order_details VALUES (?,?,?,?,?,?,?)",
                 orderDetails.getId(),

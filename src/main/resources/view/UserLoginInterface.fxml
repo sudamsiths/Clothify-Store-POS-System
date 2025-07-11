@@ -1,106 +1,117 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+
 <?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.*?>
 <?import javafx.scene.Cursor?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.PasswordField?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Rectangle?>
-<?import javafx.scene.text.Font?>
-
-
-<AnchorPane prefHeight="700.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.UserLoginInterfaceController">
-   <children>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#404a54" height="700.0" layoutX="-3.0" stroke="#404a54" strokeType="INSIDE" width="600.0" />
-      <ImageView fitHeight="700.0" fitWidth="735.0" layoutX="-63.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../img/2.png" />
-         </image>
-      </ImageView>
-      <Label layoutX="74.0" layoutY="32.0" prefHeight="105.0" prefWidth="470.0" text="Your Ultimate Shopping " textFill="WHITE" textOverrun="WORD_ELLIPSIS">
-         <font>
-            <Font name="Bookman Old Style" size="37.0" />
-         </font>
-      </Label>
-      <Label layoutX="90.0" layoutY="116.0" prefHeight="87.0" prefWidth="439.0" text="Experience Starts Here" textFill="WHITE" textOverrun="WORD_ELLIPSIS">
-         <font>
-            <Font name="Bookman Old Style" size="37.0" />
-         </font>
-      </Label>
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="213.0" layoutY="564.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="32.0" prefWidth="149.0" text="Clothify Store" textAlignment="CENTER" textFill="WHITE">
-         <font>
-            <Font name="System Bold" size="22.0" />
-         </font>
-         <cursor>
-            <Cursor fx:constant="TEXT" />
-         </cursor>
-      </Label>
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="205.0" layoutY="626.0" nodeOrientation="LEFT_TO_RIGHT" text="+94 123 456 789" textAlignment="CENTER" textFill="WHITE">
-         <font>
-            <Font size="20.0" />
-         </font>
-         <cursor>
-            <Cursor fx:constant="TEXT" />
-         </cursor>
-      </Label>
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="240.0" layoutY="596.0" nodeOrientation="LEFT_TO_RIGHT" text="Panadura" textAlignment="CENTER" textFill="WHITE">
-         <font>
-            <Font name="System Italic" size="20.0" />
-         </font>
-         <cursor>
-            <Cursor fx:constant="TEXT" />
-         </cursor>
-      </Label>
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="184.0" layoutY="656.0" nodeOrientation="LEFT_TO_RIGHT" text="clothify@sample.com" textAlignment="CENTER" textFill="WHITE">
-         <font>
-            <Font size="20.0" />
-         </font>
-         <cursor>
-            <Cursor fx:constant="TEXT" />
-         </cursor>
-      </Label>
-      <Label layoutX="724.0" layoutY="148.0" prefHeight="68.0" prefWidth="333.0" text="Login Clothify Store">
-         <font>
-            <Font name="Anton Regular" size="43.0" />
-         </font>
-      </Label>
-      <Label layoutX="696.0" layoutY="297.0" prefHeight="37.0" prefWidth="129.0" text="email           : ">
-         <font>
-            <Font name="Anton Regular" size="23.0" />
-         </font>
-      </Label>
-      <TextField fx:id="txtloginemail" layoutX="863.0" layoutY="296.0" prefHeight="37.0" prefWidth="223.0" promptText="Sample@gmail.com">
-         <font>
-            <Font name="Arial Rounded MT Bold" size="17.0" />
-         </font>
-      </TextField>
-      <PasswordField fx:id="txtloginpassword" layoutX="863.0" layoutY="365.0" prefHeight="39.0" prefWidth="223.0" promptText="1234!^&amp;QRfs">
-         <font>
-            <Font size="17.0" />
-         </font>
-      </PasswordField>
-      <Label layoutX="696.0" layoutY="365.0" prefHeight="37.0" prefWidth="129.0" text="Password    : ">
-         <font>
-            <Font name="Anton Regular" size="23.0" />
-         </font>
-      </Label>
-      <JFXButton layoutX="785.0" layoutY="453.0" onAction="#userloginOnAction" prefHeight="48.0" prefWidth="164.0" style="-fx-background-color: #404a54;" text="Login" textFill="WHITE">
-         <font>
-            <Font name="Baskerville Old Face" size="23.0" />
-         </font>
-      </JFXButton>
-      <JFXButton layoutX="772.0" layoutY="617.0" onAction="#createAccountOnAction" prefHeight="48.0" prefWidth="190.0" style="-fx-background-color: #404a54;" text="Create Account" textFill="WHITE">
-         <font>
-            <Font name="Baskerville Old Face" size="23.0" />
-         </font>
-      </JFXButton>
-      <JFXButton layoutX="806.0" layoutY="511.0" onAction="#userforgotpwOnAction" prefHeight="22.0" prefWidth="123.0" style="-fx-background-color: #404a54;" text="Forget Password" textFill="WHITE">
-         <font>
-            <Font name="Arial Bold" size="11.0" />
-         </font>
-      </JFXButton>
-   </children>
+<?import javafx.scene.text.*?>
+<AnchorPane prefHeight="700.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/23.0.1"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.UserLoginInterfaceController">
+    <children>
+        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#404a54" height="700.0" layoutX="-3.0" stroke="#404a54"
+                   strokeType="INSIDE" width="600.0"/>
+        <ImageView fitHeight="700.0" fitWidth="735.0" layoutX="-63.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../img/2.png"/>
+            </image>
+        </ImageView>
+        <Label layoutX="74.0" layoutY="32.0" prefHeight="105.0" prefWidth="470.0" text="Your Ultimate Shopping "
+               textFill="WHITE" textOverrun="WORD_ELLIPSIS">
+            <font>
+                <Font name="Bookman Old Style" size="37.0"/>
+            </font>
+        </Label>
+        <Label layoutX="90.0" layoutY="116.0" prefHeight="87.0" prefWidth="439.0" text="Experience Starts Here"
+               textFill="WHITE" textOverrun="WORD_ELLIPSIS">
+            <font>
+                <Font name="Bookman Old Style" size="37.0"/>
+            </font>
+        </Label>
+        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="213.0" layoutY="564.0"
+               nodeOrientation="LEFT_TO_RIGHT" prefHeight="32.0" prefWidth="149.0" text="Clothify Store"
+               textAlignment="CENTER" textFill="WHITE">
+            <font>
+                <Font name="System Bold" size="22.0"/>
+            </font>
+            <cursor>
+                <Cursor fx:constant="TEXT"/>
+            </cursor>
+        </Label>
+        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="205.0" layoutY="626.0"
+               nodeOrientation="LEFT_TO_RIGHT" text="+94 123 456 789" textAlignment="CENTER" textFill="WHITE">
+            <font>
+                <Font size="20.0"/>
+            </font>
+            <cursor>
+                <Cursor fx:constant="TEXT"/>
+            </cursor>
+        </Label>
+        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="240.0" layoutY="596.0"
+               nodeOrientation="LEFT_TO_RIGHT" text="Panadura" textAlignment="CENTER" textFill="WHITE">
+            <font>
+                <Font name="System Italic" size="20.0"/>
+            </font>
+            <cursor>
+                <Cursor fx:constant="TEXT"/>
+            </cursor>
+        </Label>
+        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="184.0" layoutY="656.0"
+               nodeOrientation="LEFT_TO_RIGHT" text="clothify@sample.com" textAlignment="CENTER" textFill="WHITE">
+            <font>
+                <Font size="20.0"/>
+            </font>
+            <cursor>
+                <Cursor fx:constant="TEXT"/>
+            </cursor>
+        </Label>
+        <Label layoutX="724.0" layoutY="148.0" prefHeight="68.0" prefWidth="333.0" text="Login Clothify Store">
+            <font>
+                <Font name="Anton Regular" size="43.0"/>
+            </font>
+        </Label>
+        <Label layoutX="696.0" layoutY="297.0" prefHeight="37.0" prefWidth="129.0" text="email           : ">
+            <font>
+                <Font name="Anton Regular" size="23.0"/>
+            </font>
+        </Label>
+        <TextField fx:id="txtloginemail" layoutX="863.0" layoutY="296.0" prefHeight="37.0" prefWidth="223.0"
+                   promptText="Sample@gmail.com">
+            <font>
+                <Font name="Arial Rounded MT Bold" size="17.0"/>
+            </font>
+        </TextField>
+        <PasswordField fx:id="txtloginpassword" layoutX="863.0" layoutY="365.0" prefHeight="39.0" prefWidth="223.0"
+                       promptText="1234!^&amp;QRfs">
+            <font>
+                <Font size="17.0"/>
+            </font>
+        </PasswordField>
+        <Label layoutX="696.0" layoutY="365.0" prefHeight="37.0" prefWidth="129.0" text="Password    : ">
+            <font>
+                <Font name="Anton Regular" size="23.0"/>
+            </font>
+        </Label>
+        <JFXButton layoutX="785.0" layoutY="453.0" onAction="#userloginOnAction" prefHeight="48.0" prefWidth="164.0"
+                   style="-fx-background-color: #404a54;" text="Login" textFill="WHITE">
+            <font>
+                <Font name="Baskerville Old Face" size="23.0"/>
+            </font>
+        </JFXButton>
+        <JFXButton layoutX="772.0" layoutY="617.0" onAction="#createAccountOnAction" prefHeight="48.0" prefWidth="190.0"
+                   style="-fx-background-color: #404a54;" text="Create Account" textFill="WHITE">
+            <font>
+                <Font name="Baskerville Old Face" size="23.0"/>
+            </font>
+        </JFXButton>
+        <JFXButton layoutX="806.0" layoutY="511.0" onAction="#userforgotpwOnAction" prefHeight="22.0" prefWidth="123.0"
+                   style="-fx-background-color: #404a54;" text="Forget Password" textFill="WHITE">
+            <font>
+                <Font name="Arial Bold" size="11.0"/>
+            </font>
+        </JFXButton>
+    </children>
 </AnchorPane>

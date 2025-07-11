@@ -1,5 +1,6 @@
 package controller;
 
+import DTO.Employee;
 import Service.ServiceFactory;
 import Service.custom.EmployeeService;
 import db.DBConnection;
@@ -11,12 +12,10 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import DTO.Employee;
 import util.ServiceType;
 
-import java.sql.*;
-
 import java.io.IOException;
+import java.sql.*;
 
 public class AddUserInterfaceController {
 
@@ -139,7 +138,7 @@ public class AddUserInterfaceController {
     }
 
     public void ViewCustomersOnAction(ActionEvent actionEvent) throws IOException {
-        Stage s1=new Stage();
+        Stage s1 = new Stage();
         s1.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/UpdateCustomerdetails.fxml"))));
         s1.show();
     }

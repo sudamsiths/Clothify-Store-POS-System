@@ -87,7 +87,7 @@ public class RemoveUpdateProductController {
 
     @FXML
     void btndeleteonAction(ActionEvent event) throws SQLException {
-       Products products = (Products) tblview.getSelectionModel().getSelectedItem();
+        Products products = (Products) tblview.getSelectionModel().getSelectedItem();
         if (products == null) {
             showAlert("Please select an Product to delete");
             return;
@@ -160,6 +160,7 @@ public class RemoveUpdateProductController {
         alert.setContentText(message);
         alert.showAndWait();
     }
+
     private void clearFields() {
         txtsupplierid.clear();
         txtproducttitle.clear();

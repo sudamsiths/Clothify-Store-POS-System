@@ -18,5 +18,4 @@ public class Employee extends employeeuser {
     private String contactno;
 
 
-
 }
