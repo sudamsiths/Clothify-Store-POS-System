@@ -14,12 +14,16 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 import util.ServiceType;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -459,5 +463,11 @@ public class PlaceOrderFormController implements Initializable {
             }
         }
         lbltotal.setText(String.format("%.2f", netTotal));
+    }
+
+    public void AddStockOnAction(ActionEvent actionEvent) throws IOException {
+      Stage loginStage = new Stage();
+      loginStage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/RemoveUpdateProductInterface.fxml"))));
+      loginStage.show();
     }
 }
