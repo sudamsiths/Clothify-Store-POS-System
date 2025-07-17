@@ -20,27 +20,21 @@ public class SupplierRepositoryimpl implements SupplierRepository {
     @Override
     public boolean add(SupplierEntity entity) throws SQLException {
 
-        System.out.println(entity);
+        String sql = "INSERT INTO suppliers VALUES (?, ?, ?, ?, ?)";
+        try (var connection = DBConnection.getInstance().getConnection();
+             var preparedStatement = connection.prepareStatement(sql)) {
 
-        Transaction transaction = null;
+            preparedStatement.setString(1, entity.getSupplier_id());
+            preparedStatement.setString(2, entity.getSupplier_name());
+            preparedStatement.setString(3, entity.getCompany_name());
+            preparedStatement.setString(4, entity.getEmail());
+            preparedStatement.setString(5, entity.getItem());
 
-        try(Session session =HibernateUtil.getSessionFactory().getCurrentSession()) {
-
-            transaction = session.beginTransaction();
-            session.persist(entity);
-
-            transaction.commit();
-
-
-        } catch (HibernateError e) {
-
-            if (transaction != null) {
-                transaction.rollback();
-            }
+            return preparedStatement.executeUpdate() > 0;
+        } catch (SQLException e) {
             e.printStackTrace();
+            throw e;
         }
-
-        return true;
     }
 
     @Override
