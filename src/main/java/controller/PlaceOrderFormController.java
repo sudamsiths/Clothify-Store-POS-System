@@ -340,6 +340,7 @@ public class PlaceOrderFormController implements Initializable {
             if (success) {
                 showAlert(Alert.AlertType.INFORMATION, "Success",
                         "Order placed successfully!\nOrder ID: " + orderId);
+                showReceipt(order); // Generate and display the receipt
                 clearForm();
                 generateNewOrderID();
             }
@@ -349,6 +350,34 @@ public class PlaceOrderFormController implements Initializable {
             e.printStackTrace();
             showAlert(Alert.AlertType.ERROR, "Error", "Error placing order: " + e.getMessage());
         }
+    }
+
+    private void showReceipt(Order order) {
+        StringBuilder receipt = new StringBuilder();
+        receipt.append("Order Receipt\n");
+        receipt.append("Order ID: ").append(order.getId()).append("\n");
+        receipt.append("Date: ").append(order.getDate()).append("\n");
+        receipt.append("Customer ID: ").append(order.getCustomerId()).append("\n");
+        receipt.append("Items:\n");
+
+        for (OrderDetails detail : order.getOrderDetails()) {
+            receipt.append("- Item Code: ").append(detail.getId())
+                    .append(", Category: ").append(detail.getCategory())
+                    .append(", Size: ").append(detail.getSize())
+                    .append(", Quantity: ").append(detail.getQty())
+                    .append(", Unit Price: ").append(detail.getUnit_price())
+                    .append(", Total: ").append(detail.getTotal())
+                    .append("\n");
+        }
+
+        receipt.append("Net Total: ").append(lbltotal.getText()).append("\n");
+
+        // Display the receipt in an alert dialog
+        Alert receiptAlert = new Alert(Alert.AlertType.INFORMATION);
+        receiptAlert.setTitle("Order Receipt");
+        receiptAlert.setHeaderText("Order Successfully Placed");
+        receiptAlert.setContentText(receipt.toString());
+        receiptAlert.showAndWait();
     }
 
     private boolean validateOrder() {

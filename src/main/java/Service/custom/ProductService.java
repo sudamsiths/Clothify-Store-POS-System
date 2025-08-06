@@ -18,4 +18,6 @@ public interface ProductService extends SuperService {
     List<Products> deleteProducts(String id);
 
     List<String> getItemsID() throws SQLException;
+
+    void updateStock(String itemCode, Integer qtyOnHand);
 }

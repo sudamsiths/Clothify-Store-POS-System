@@ -67,6 +67,16 @@ public class ProductServiceimpl implements ProductService {
         return ItemsList;
     }
 
+    @Override
+    public void updateStock(String itemCode, Integer qtyOnHand) {
+        String sql = "UPDATE products SET qty = qty - ? WHERE id = ?";
+        try {
+            CRUDutil.execute(sql, qtyOnHand, itemCode);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
     public Boolean updateStock(List<OrderDetails> orderDetails) throws SQLException {
         for (OrderDetails details : orderDetails) {
             Boolean isUpdate = updateStock(details);
