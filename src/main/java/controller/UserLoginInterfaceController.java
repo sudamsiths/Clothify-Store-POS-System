@@ -107,7 +107,6 @@ public class UserLoginInterfaceController {
             ResultSet resultSet = preparedStatement.executeQuery();
             return resultSet.next();
         } finally {
-            // Close resources if needed
         }
     }
 
@@ -169,7 +168,6 @@ public class UserLoginInterfaceController {
             showAlert(Alert.AlertType.INFORMATION, "OTP Verified",
                     "OTP verification successful! You can now proceed with password reset.");
 
-            // Clear the OTP and reset the form
             clearOTPForm();
 
             Stage s1 = new Stage();
@@ -188,7 +186,7 @@ public class UserLoginInterfaceController {
 
     private String generateOTP() {
         Random random = new Random();
-        int otp = 100000 + random.nextInt(900000); // Generate 6-digit number
+        int otp = 100000 + random.nextInt(900000);
         return String.valueOf(otp);
     }
 
@@ -224,20 +222,46 @@ public class UserLoginInterfaceController {
             });
             message.setSubject("Your OTP Code - Password Reset");
 
-            String emailBody = "Dear User,\n\n" +
-                    "Your OTP code for password reset is: " + otp + "\n\n" +
-                    "This code will expire in 10 minutes.\n" +
-                    "If you didn't request this, please ignore this email.\n\n" +
-                    "Best regards,\n" +
-                    "Your Application Team";
+            // HTML email body with OTP
+            String emailBody = "<!DOCTYPE html>" +
+                    "<html>" +
+                    "<head>" +
+                    "  <meta charset='UTF-8'>" +
+                    "  <style>" +
+                    "    @keyframes gradientAnimation {" +
+                    "      0% { background-position: 0% 50%; }" +
+                    "      50% { background-position: 100% 50%; }" +
+                    "      100% { background-position: 0% 50%; }" +
+                    "    }" +
+                    "  </style>" +
+                    "</head>" +
+                    "<body style='margin:0;padding:0;background:linear-gradient(-45deg, #6a11cb, #2575fc, #6a11cb);background-size:400% 400%;animation:gradientAnimation 15s ease infinite;font-family:Arial,sans-serif;color:white;'>" +
+                    "<div style='max-width:600px;margin:auto;padding:40px;background-color:rgba(0,0,0,0.5);border-radius:12px;box-shadow:0 0 20px rgba(0,0,0,0.3);'>" +
+                    "<h1 style='text-align:center;font-size:28px;margin-bottom:20px;'>🔐 OTP Verification</h1>" +
+                    "<p style='font-size:18px;'>Dear User,</p>" +
+                    "<p style='font-size:16px;'>Your OTP code for password reset is:</p>" +
+                    "<div style='text-align:center;margin:20px 0;'>" +
+                    "<span style='font-size:36px;font-weight:bold;background:linear-gradient(90deg, #ff8a00, #e52e71);-webkit-background-clip:text;-webkit-text-fill-color:transparent;'>" +
+                    otp +
+                    "</span>" +
+                    "</div>" +
+                    "<p style='font-size:16px;'>This code will expire in <strong>10 minutes</strong>.</p>" +
+                    "<p style='font-size:16px;'>If you didn't request this, please ignore this email.</p>" +
+                    "<p style='font-size:16px;margin-top:30px;'>Best regards,<br><strong>Clothify Store</strong></p>" +
+                    "</div>" +
+                    "</body>" +
+                    "</html>";
 
-            message.setText(emailBody);
+            // Set HTML content
+            message.setContent(emailBody, "text/html; charset=utf-8");
+
             return message;
         } catch (Exception e) {
             Logger.getLogger(UserLoginInterfaceController.class.getName()).log(Level.SEVERE, null, e);
         }
         return null;
     }
+
 
     private boolean isValidEmail(String email) {
         return email.contains("@") && email.contains(".");
